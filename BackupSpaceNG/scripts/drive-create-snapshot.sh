@@ -13,7 +13,7 @@ fi
 USER_NAME=$2
 if [ "${USER_NAME}xx" == "xx" ]; then
    echo "error: user name not specified"
-   exit 1
+   exit 2
 fi
 
 DSUBVOLUME=`date +'%Y-%m-%d_%H-%M-%S'`
@@ -22,7 +22,7 @@ DSUBVOLUME=${DSUBVOLUME}_${PRIMARY_SUBVOLUME}
 btrfs subvolume snapshot ${DMOUNTPOINT}/${USER_NAME}/${PRIMARY_SUBVOLUME} ${DMOUNTPOINT}/${USER_NAME}/${DSUBVOLUME}
 if [ $? -ne 0  ]; then
    echo "error: btrfs subvolume snapshot has failed"
-   exit 1
+   exit 16
 fi
 
 exit 0

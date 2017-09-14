@@ -15,18 +15,20 @@ fi
 DKEYFILE=$2
 if [ "${DKEYFILE}xx" == "xx" ]; then
    echo "error: key file not specified"
-   exit 1
+   exit 3
 fi
 
 DKEYFILENEW=$3
 if [ "${DKEYFILENEW}xx" == "xx" ]; then
    echo "error: new key file not specified"
-   exit 1
+   exit 4
 fi
 
 cryptsetup luksChangeKey --batch-mode --key-file ${DKEYFILE} --key-slot 0 ${DDEVICE}1 ${DKEYFILENEW}
 if [ $? -ne 0  ]; then
    echo "error: luks change key has failed"
-   exit 1
+   exit 16
 fi
+
+exit 0
 

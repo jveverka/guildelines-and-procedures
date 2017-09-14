@@ -9,14 +9,14 @@ fi
 DSUBVOLUME=$2
 if [ "${DSUBVOLUME}xx" == "xx" ]; then
    echo "error: subvolume name not specified"
-   exit 1
+   exit 2
 fi
 
 btrfs subvolume delete ${DMOUNTPOINT}/${DSUBVOLUME}
 if [ $? -ne 0  ]; then
    echo "error: btrfs subvolume delete has failed"
-   exit 1
+   exit 16
 fi
 
-echo 0
+exit 0
  

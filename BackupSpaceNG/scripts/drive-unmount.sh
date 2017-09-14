@@ -9,19 +9,19 @@ fi
 DMOUNTPOINT=$2
 if [ "${DMOUNTPOINT}xx" == "xx" ]; then
    echo "error: luks mount point not specified"
-   exit 1
+   exit 2
 fi
 
 umount ${DMOUNTPOINT}
 if [ $? -ne 0  ]; then
    echo "error: drive unmount has failed"
-   exit 1
+   exit 3
 fi
 
 cryptsetup luksClose ${DLUKSNAME}
 if [ $? -ne 0  ]; then
    echo "error: luks close has failed"
-   exit 1
+   exit 16
 fi
 
 exit 0

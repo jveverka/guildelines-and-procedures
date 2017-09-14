@@ -9,7 +9,7 @@ fi
 btrfs scrub start -B ${DMOUNTPOINT}
 if [ $? -ne 0  ]; then
    echo "error: btrfs scrub has failed"
-   exit 1
+   exit 16
 fi
 
 exit 0

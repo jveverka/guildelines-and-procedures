@@ -24,7 +24,7 @@ fi
 DKEYFILE=$2
 if [ "${DKEYFILE}xx" == "xx" ]; then
    echo "error: key file not specified"
-   exit 1
+   exit 3
 fi
 
 #create single full size partition on disk drive 

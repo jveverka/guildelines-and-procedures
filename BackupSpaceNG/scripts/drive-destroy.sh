@@ -20,7 +20,7 @@ fi
 dd bs=512 count=63 if=/dev/zero of=${DDEVICE}
 if [ $? -ne 0  ]; then
    echo "error: dd partition cleanup failed"
-   exit 1
+   exit 16
 fi
 
 sync
