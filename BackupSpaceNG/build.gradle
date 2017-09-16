@@ -1,0 +1,20 @@
+
+allprojects {
+}
+
+subprojects {
+    apply plugin: "java"
+  
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        compile 'org.slf4j:slf4j-api:1.7.25'
+        compile 'org.slf4j:slf4j-log4j12:1.7.25'
+    }
+}
+
+project(':backup-ng-server') {
+}
+

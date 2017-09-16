@@ -40,7 +40,7 @@ shred -z -u keyFile
 ### Remote script execution:
 ```
 ssh -i keys/remote root@192.168.30.150 /opt/gbackup/scripts/drive-list-mounts.sh
-sshpass -p secret -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null root@192.168.30.150 /opt/gbackup/scripts/drive-list-mounts.sh
+sshpass -p secret ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null root@192.168.30.150 /opt/gbackup/scripts/drive-list-mounts.sh
 ```
 
 
