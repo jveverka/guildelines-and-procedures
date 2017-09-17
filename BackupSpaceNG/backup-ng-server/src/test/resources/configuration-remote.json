@@ -1,6 +1,7 @@
 {
   "serverId": "server01",
   "rootDir": "/opt/backupng/scripts",
+  "systemDriveIds": [ "/dev/sda" ],
   "remoteSystem": {
     "host": "192.168.30.21",
     "user": "root",

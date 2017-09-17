@@ -8,6 +8,10 @@ import java.util.Collection;
  */
 public class CmdExecResult {
 
+    public static final String STD_OUT_DELIMITER = "### stdOut:";
+    public static final String STD_ERR_DELIMITER = "### stdErr:";
+    public static final String EXIT_CODE_DELIMITER = "### exitCode:";
+
     private Collection<String> stdOut;
     private Collection<String> stdErr;
     private int exitCode;
@@ -68,6 +72,27 @@ public class CmdExecResult {
         result = 31 * result + stdErr.hashCode();
         result = 31 * result + exitCode;
         return result;
+    }
+
+    @Override
+    public String toString() {
+        StringBuffer sb = new StringBuffer();
+        sb.append(STD_OUT_DELIMITER);
+        sb.append("\n");
+        for (String line : stdOut) {
+            sb.append(line);
+            sb.append("\n");
+        }
+        sb.append(STD_ERR_DELIMITER);
+        sb.append("\n");
+        for (String line : stdErr) {
+            sb.append(line);
+            sb.append("\n");
+        }
+        sb.append(EXIT_CODE_DELIMITER);
+        sb.append("\n");
+        sb.append(exitCode);
+        return sb.toString();
     }
 
 }

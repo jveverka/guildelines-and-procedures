@@ -12,30 +12,6 @@ import java.util.List;
 
 public class Utils {
 
-    private static final String STD_OUT = "### stdOut:";
-    private static final String STD_ERR = "### stdErr:";
-    private static final String EXIT_CODE = "### exitCode:";
-
-    public static String cmdExecToString(CmdExecResult cmdExecResult) {
-        StringBuffer sb = new StringBuffer();
-        sb.append(STD_OUT);
-        sb.append("\n");
-        for (String line : cmdExecResult.getStdOut()) {
-            sb.append(line);
-            sb.append("\n");
-        }
-        sb.append(STD_ERR);
-        sb.append("\n");
-        for (String line : cmdExecResult.getStdErr()) {
-            sb.append(line);
-            sb.append("\n");
-        }
-        sb.append(EXIT_CODE);
-        sb.append("\n");
-        sb.append(cmdExecResult.getExitCode());
-        return sb.toString();
-    }
-
     public static CmdExecResult readCmdExecResult(InputStream inputStream) throws IOException {
         int status = 0;
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
@@ -44,13 +20,13 @@ public class Utils {
         List<String> stdErr = new ArrayList<>();
         int exitCode = Integer.MIN_VALUE;
         while ((line = reader.readLine()) != null) {
-            if (STD_OUT.equals(line)) {
+            if (CmdExecResult.STD_OUT_DELIMITER.equals(line)) {
                 status = 1;
                 continue;
-            } else if (STD_ERR.equals(line)) {
+            } else if (CmdExecResult.STD_ERR_DELIMITER.equals(line)) {
                 status = 2;
                 continue;
-            } else if (EXIT_CODE.equals(line)) {
+            } else if (CmdExecResult.EXIT_CODE_DELIMITER.equals(line)) {
                 status = 3;
                 continue;
             }

@@ -1,6 +1,7 @@
 {
   "serverId": "server01",
   "rootDir": "/opt/backupng/scripts",
+  "systemDriveIds": [ "/dev/sda" ],
   "grpcServer": {
     "host": "127.0.0.1",
     "port": 50051
