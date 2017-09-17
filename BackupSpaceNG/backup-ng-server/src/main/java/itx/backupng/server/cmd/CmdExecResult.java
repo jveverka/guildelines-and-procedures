@@ -2,6 +2,10 @@ package itx.backupng.server.cmd;
 
 import java.util.Collection;
 
+/**
+ * This class is data holder containing results of
+ * command line task execution result.
+ */
 public class CmdExecResult {
 
     private Collection<String> stdOut;
@@ -14,18 +18,34 @@ public class CmdExecResult {
         this.exitCode = exitCode;
     }
 
+    /**
+     * returns standard output from the task as collection of lines.
+     * @return
+     */
     public Collection<String> getStdOut() {
         return stdOut;
     }
 
+    /**
+     * returns error output from the task as collection of lines.
+     * @return
+     */
     public Collection<String> getStdErr() {
         return stdErr;
     }
 
+    /**
+     * returns exit code of executed task
+     * @return
+     */
     public int getExitCode() {
         return exitCode;
     }
 
+    /**
+     * returns if task was executed successfully, if exitCode == 0
+     * @return
+     */
     public boolean isSuccess() {
         return exitCode == 0;
     }

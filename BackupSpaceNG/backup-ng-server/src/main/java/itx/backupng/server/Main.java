@@ -32,11 +32,9 @@ public class Main {
 
     private static class ShutdownHook extends Thread {
         private Controller controller;
-
         public ShutdownHook(Controller controller) {
             this.controller = controller;
         }
-
         public void run() {
             LOG.info("Shutting down BackupSpaceNG ...");
             controller.shutdown();

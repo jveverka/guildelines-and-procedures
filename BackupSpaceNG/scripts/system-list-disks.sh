@@ -1,16 +1,14 @@
 #!/bin/bash
 
-SYSTEM_DISK=$1
-if [ "${SYSTEM_DISK}xx" == "xx" ]; then
-   echo "error: system disk not specified"
-   exit 1
-fi
-
-ls -1 /dev/sd* | grep -v ${SYSTEM_DISK}
+echo "disks-by-uuid:"
+ls -l /dev/disk/by-uuid
+echo "disks-by-id:"
+ls -l /dev/disk/by-id
+echo "disks-by-path:"
+ls -l /dev/disk/by-path
 if [ $? -ne 0  ]; then
    echo "error: list disks has failed"
    exit 16
 fi
 
 exit 0
-
