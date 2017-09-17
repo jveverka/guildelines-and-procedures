@@ -1,4 +1,8 @@
 {
   "serverId": "server01",
-  "rootDir": "/opt/backupng/scripts"
+  "rootDir": "/opt/backupng/scripts",
+  "grpcServer": {
+    "host": "127.0.0.1",
+    "port": 50051
+  }
 }

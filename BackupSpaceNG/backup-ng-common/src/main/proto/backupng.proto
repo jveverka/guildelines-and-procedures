@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "itx.backupng.server.grpc";
+option java_outer_classname = "BackupSpaceNGPoto";
+option objc_class_prefix = "HLW";
+
+service BackupService {
+
+    rpc GetVersion (EmptyMessage) returns (VersionReply) {}
+
+}
+
+message EmptyMessage {}
+
+message VersionReply {
+    string version = 1;
+}

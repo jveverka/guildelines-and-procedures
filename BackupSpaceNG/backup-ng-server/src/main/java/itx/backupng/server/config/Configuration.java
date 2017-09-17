@@ -8,14 +8,17 @@ public class Configuration {
     private String serverId;
     private String rootDir;
     private RemoteSystem remoteSystem;
+    private GrpcServer grpcServer;
 
     @JsonCreator
     public Configuration(@JsonProperty("serverId") String serverId,
                          @JsonProperty("rootDir") String rootDir,
-                         @JsonProperty("remoteSystem") RemoteSystem remoteSystem) {
+                         @JsonProperty("remoteSystem") RemoteSystem remoteSystem,
+                         @JsonProperty("grpcServer") GrpcServer grpcServer) {
         this.serverId = serverId;
         this.rootDir = rootDir;
         this.remoteSystem = remoteSystem;
+        this.grpcServer = grpcServer;
     }
 
     public String getRootDir() {
@@ -32,5 +35,9 @@ public class Configuration {
 
     public String getServerId() {
         return serverId;
+    }
+
+    public GrpcServer getGrpcServer() {
+        return grpcServer;
     }
 }

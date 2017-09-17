@@ -20,8 +20,9 @@ zypper update
 
 ### Manage key file manually:
 ```
-echo -e "password" > keyFile```
+echo -e "password" > keyFile  
 shred -z -u keyFile
+```
 ```
 ./drive-destroy.sh /dev/sdb
 ./drive-init.sh /dev/sdb /opt/gbackup/scripts/keyFile

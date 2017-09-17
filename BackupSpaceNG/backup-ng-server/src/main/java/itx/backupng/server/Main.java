@@ -21,8 +21,13 @@ public class Main {
             Configuration configuration = ConfigUtils.load(Paths.get(configPath));
             Controller controller = new ControllerImpl(configuration);
             controller.start();
-            Runtime.getRuntime().addShutdownHook(new ShutdownHook(controller));
+            GrpcServer grpcServer = new GrpcServer(
+                    configuration.getGrpcServer().getHost(),
+                    configuration.getGrpcServer().getPort());
+            grpcServer.start();
+            Runtime.getRuntime().addShutdownHook(new ShutdownHook(controller, grpcServer));
             LOG.info("BackupSpaceNG started.");
+            grpcServer.blockUntilShutdown();
         } catch (IOException e) {
             LOG.error("BackupSpaceNG error: config file not defined !", e);
         } catch (Exception e) {
@@ -32,11 +37,14 @@ public class Main {
 
     private static class ShutdownHook extends Thread {
         private Controller controller;
-        public ShutdownHook(Controller controller) {
+        private GrpcServer grpcServer;
+        public ShutdownHook(Controller controller, GrpcServer grpcServer) {
             this.controller = controller;
+            this.grpcServer = grpcServer;
         }
         public void run() {
             LOG.info("Shutting down BackupSpaceNG ...");
+            grpcServer.stop();
             controller.shutdown();
             LOG.info("BackupSpaceNG stopped.");
         }
