@@ -9,6 +9,8 @@ service BackupService {
 
     rpc GetVersion (EmptyMessage) returns (VersionReply) {}
 
+    rpc DataChannel (stream WrapperRequest) returns (stream WrapperResponse) {}
+
 }
 
 message EmptyMessage {}
@@ -16,3 +18,40 @@ message EmptyMessage {}
 message VersionReply {
     string version = 1;
 }
+
+message DataException {
+    string message = 1;
+}
+
+message WrapperRequest {
+    int64 contextId = 1;
+    oneof data {
+        DiskInfoRequest diskInfoRequest = 2;
+    }
+}
+
+message WrapperResponse {
+    int64 contextId = 1;
+    DataException dataException = 2;
+    oneof data {
+        DiskInfoResponse diskInfoResponse = 3;
+    }
+}
+
+message DiskInfoRequest {
+}
+
+message PartitionInfo {
+    string id = 1;
+    string uuid = 2;
+}
+
+message DiskInfo {
+    string id = 1;
+    repeated PartitionInfo partitionInfo = 2;
+}
+
+message DiskInfoResponse {
+    repeated DiskInfo diskInfo = 1;
+}
+

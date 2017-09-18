@@ -4,6 +4,7 @@ import itx.backupng.server.config.ConfigUtils;
 import itx.backupng.server.config.Configuration;
 import itx.backupng.server.controller.Controller;
 import itx.backupng.server.controller.ControllerImpl;
+import itx.backupng.server.grpc.GrpcServer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,17 +17,18 @@ public class Main {
 
     public static void main(String[] args) {
         try {
-            LOG.info("BackupSpaceNG starting ...");
+            LOG.info("BackupSpaceNG starting server ...");
             String configPath = System.getProperty("configuration");
             Configuration configuration = ConfigUtils.load(Paths.get(configPath));
             Controller controller = new ControllerImpl(configuration);
             controller.start();
             GrpcServer grpcServer = new GrpcServer(
                     configuration.getGrpcServer().getHost(),
-                    configuration.getGrpcServer().getPort());
+                    configuration.getGrpcServer().getPort(),
+                    controller.getServices());
             grpcServer.start();
             Runtime.getRuntime().addShutdownHook(new ShutdownHook(controller, grpcServer));
-            LOG.info("BackupSpaceNG started.");
+            LOG.info("BackupSpaceNG server started.");
             grpcServer.blockUntilShutdown();
         } catch (IOException e) {
             LOG.error("BackupSpaceNG error: config file not defined !", e);
@@ -46,7 +48,7 @@ public class Main {
             LOG.info("Shutting down BackupSpaceNG ...");
             grpcServer.stop();
             controller.shutdown();
-            LOG.info("BackupSpaceNG stopped.");
+            LOG.info("BackupSpaceNG server stopped.");
         }
     }
 
