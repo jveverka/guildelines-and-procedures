@@ -20,7 +20,11 @@ Build and Run
 -------------
 ```gradle clean build```
 
+#### Run BackupSpaceNG server
+
+
 #### Deploy control scripts
+This is how control scripts are deployed on target system.
 ```
 sshpass -p secret ssh root@192.168.30.21 rm -rf /opt/backupng/scripts
 sshpass -p secret scp -r scripts root@192.168.30.21:/opt/backupng/

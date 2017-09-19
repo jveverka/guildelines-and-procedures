@@ -5,36 +5,37 @@ import itx.backupng.server.grpc.DiskInfoRequest;
 import itx.backupng.server.grpc.WrapperRequest;
 
 import java.util.Map;
-import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Future;
 import java.util.concurrent.atomic.AtomicLong;
 
 public class CommandHandler {
 
     private StreamObserver streamObserver;
     private AtomicLong contextId;
-    private Map<Long, CountDownLatch> commands;
+    private Map<Long, CompletableFuture<Boolean>> commands;
 
-    public CommandHandler(StreamObserver streamObserver, Map<Long, CountDownLatch> commands) {
+    public CommandHandler(StreamObserver streamObserver, Map<Long, CompletableFuture<Boolean>> commands) {
         this.streamObserver = streamObserver;
         this.commands = commands;
         this.contextId = new AtomicLong(0);
     }
 
-    public CountDownLatch execCommand(String command) {
-        Long ctxid = contextId.getAndIncrement();
-        CountDownLatch countDownLatch = new CountDownLatch(1);
+    public Future<Boolean> execCommand(String command) {
+        Long ctxId = contextId.getAndIncrement();
+        CompletableFuture<Boolean> taskStatus = new CompletableFuture();
         if (Commands.DISK_INFO_CMD.equals(command.toLowerCase())) {
             WrapperRequest wrapperMessage = WrapperRequest.newBuilder()
-                    .setContextId(ctxid)
+                    .setContextId(ctxId)
                     .setDiskInfoRequest(DiskInfoRequest.newBuilder().build())
                     .build();
-            commands.put(ctxid, countDownLatch);
+            commands.put(ctxId, taskStatus);
             streamObserver.onNext(wrapperMessage);
-            return countDownLatch;
+            return taskStatus;
         } else {
             MessageUtils.printlnOnStdErr("ERROR: unsupported command '" + command + "'");
-            countDownLatch.countDown();
-            return countDownLatch;
+            taskStatus.complete(false);
+            return taskStatus;
         }
     }
 

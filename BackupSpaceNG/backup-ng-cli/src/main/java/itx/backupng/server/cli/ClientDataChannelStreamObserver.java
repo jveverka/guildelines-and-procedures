@@ -7,7 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Map;
-import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.CompletableFuture;
 
 /**
  * StreamObserver which receives data from server.
@@ -17,19 +17,21 @@ public class ClientDataChannelStreamObserver<V extends WrapperResponse> implemen
 
     final private static Logger LOG = LoggerFactory.getLogger(ClientDataChannelStreamObserver.class);
 
-    private Map<Long, CountDownLatch> commands;
+    private Map<Long, CompletableFuture<Boolean>> commands;
 
-    public ClientDataChannelStreamObserver(Map<Long, CountDownLatch> commands) {
+    public ClientDataChannelStreamObserver(Map<Long, CompletableFuture<Boolean>> commands) {
         this.commands = commands;
     }
 
     @Override
     public void onNext(V value) {
+        boolean jobResult = false;
         Long contextId = value.getContextId();
-        CountDownLatch countDownLatch = commands.remove(contextId);
+        CompletableFuture<Boolean> taskStatus = commands.remove(contextId);
         switch (value.getDataCase().getNumber()) {
             case WrapperResponse.DISKINFORESPONSE_FIELD_NUMBER:
                 MessageUtils.printDiskInfoResponse(value.getDiskInfoResponse());
+                jobResult = true;
                 break;
             default:
                 DataException dataException = value.getDataException();
@@ -39,8 +41,8 @@ public class ClientDataChannelStreamObserver<V extends WrapperResponse> implemen
                     MessageUtils.printlnOnStdErr("ERROR: ");
                 }
         }
-        if (countDownLatch != null) {
-            countDownLatch.countDown();
+        if (taskStatus != null) {
+            taskStatus.complete(jobResult);
         }
     }
 

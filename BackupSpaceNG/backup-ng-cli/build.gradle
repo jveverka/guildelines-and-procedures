@@ -1,6 +1,9 @@
 
+apply plugin: 'application'
+
 group = 'itx.backupng.server'
 version = '1.0.0-SNAPSHOT'
+mainClassName='itx.backupng.server.cli.Main'
 
 dependencies {
     testCompile 'org.testng:testng:6.11'

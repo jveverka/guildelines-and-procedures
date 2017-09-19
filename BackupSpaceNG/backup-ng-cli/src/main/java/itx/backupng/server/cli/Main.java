@@ -11,9 +11,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 import java.util.Scanner;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 public class Main {
 
@@ -23,7 +21,7 @@ public class Main {
 
     public static void main(String[] args) {
         LOG.info("BackupSpaceNG CLI client starting ...");
-        Map<Long, CountDownLatch> commands = new ConcurrentHashMap<>();
+        Map<Long, CompletableFuture<Boolean>> commands = new ConcurrentHashMap<>();
 
         String target = System.getProperty("target");
         if (target == null) {
@@ -57,13 +55,15 @@ public class Main {
                 continue;
             }
             long startTime = System.nanoTime();
-            CountDownLatch countDownLatch = commandHandler.execCommand(command);
+            Future<Boolean> commandResult = commandHandler.execCommand(command);
             try {
-                countDownLatch.await(6, TimeUnit.SECONDS);
+                commandResult.get(6, TimeUnit.SECONDS);
                 float duration = (System.nanoTime() - startTime)/1_000_000f;
                 MessageUtils.printlnOnStdOut("exec. time: " + duration + "ms");
-            } catch (InterruptedException e) {
+            } catch (InterruptedException | TimeoutException e) {
                 MessageUtils.printlnOnStdErr("ERROR: command timeout !");
+            } catch (ExecutionException e) {
+                MessageUtils.printlnOnStdErr("ERROR: execution exception: " + e.getMessage());
             }
         }
         streamObserver.onCompleted();
