@@ -5,6 +5,7 @@ group = 'itx.backupng.server'
 version = '1.0.0-SNAPSHOT'
 mainClassName='itx.backupng.server.cli.Main'
 applicationDefaultJvmArgs = [
+        "-Xmx32m", "-Xmx64m",
         "-Dlog4j.configuration=file:./../config/log4j.properties"
 ]
 

@@ -2,6 +2,7 @@
   "serverId": "server01",
   "rootDir": "/opt/backupng/scripts",
   "systemDriveIds": [ "/dev/sda" ],
+  "dataFilePath": "../config/persistent-data.json",
   "remoteSystem": {
     "host": "192.168.30.21",
     "user": "root",

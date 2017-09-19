@@ -5,6 +5,7 @@ group = 'itx.backupng.server'
 version = '1.0.0-SNAPSHOT'
 mainClassName = 'itx.backupng.server.Main'
 applicationDefaultJvmArgs = [
+        "-Xmx32m", "-Xmx64m",
         "-Dlog4j.configuration=file:./../config/log4j.properties",
         "-Dconfiguration=../config/configuration.json",
 ]
@@ -16,4 +17,12 @@ dependencies {
 
 applicationDistribution.from("src/main/config") {
     into "config"
+}
+
+test {
+    useTestNG()
+    include "itx/backupng/server/tests/**"
+    testLogging {
+        events "passed", "skipped", "failed", "standardOut", "standardError"
+    }
 }

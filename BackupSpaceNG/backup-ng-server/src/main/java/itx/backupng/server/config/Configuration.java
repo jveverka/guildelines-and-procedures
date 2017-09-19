@@ -12,18 +12,21 @@ public class Configuration {
     private RemoteSystem remoteSystem;
     private GrpcServer grpcServer;
     private List<String> systemDriveIds;
+    private String dataFilePath;
 
     @JsonCreator
     public Configuration(@JsonProperty("serverId") String serverId,
                          @JsonProperty("rootDir") String rootDir,
                          @JsonProperty("remoteSystem") RemoteSystem remoteSystem,
                          @JsonProperty("grpcServer") GrpcServer grpcServer,
-                         @JsonProperty("systemDriveIds") List<String> systemDriveIds) {
+                         @JsonProperty("systemDriveIds") List<String> systemDriveIds,
+                         @JsonProperty("dataFilePath") String dataFilePath) {
         this.serverId = serverId;
         this.rootDir = rootDir;
         this.remoteSystem = remoteSystem;
         this.grpcServer = grpcServer;
         this.systemDriveIds = systemDriveIds;
+        this.dataFilePath = dataFilePath;
     }
 
     public String getRootDir() {
@@ -50,4 +53,7 @@ public class Configuration {
         return systemDriveIds;
     }
 
+    public String getDataFilePath() {
+        return dataFilePath;
+    }
 }

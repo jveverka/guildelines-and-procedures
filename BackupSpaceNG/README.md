@@ -18,7 +18,7 @@ Backup Drive
 
 Build all projects
 ------------------
-```gradle clean install distZip```
+```gradle clean test install distZip```
 
 #### Run BackupSpaceNG server
 After the project has been build, use commands below to start server.
