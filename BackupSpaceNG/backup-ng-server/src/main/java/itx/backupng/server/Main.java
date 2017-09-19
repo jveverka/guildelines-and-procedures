@@ -19,6 +19,11 @@ public class Main {
         try {
             LOG.info("BackupSpaceNG starting server ...");
             String configPath = System.getProperty("configuration");
+            if (configPath == null) {
+                LOG.error("ERROR: please specify -Dconfiguration=path/to/configuration.json");
+                return;
+            }
+            LOG.info("using config: {}", configPath);
             Configuration configuration = ConfigUtils.load(Paths.get(configPath));
             Controller controller = new ControllerImpl(configuration);
             controller.start();

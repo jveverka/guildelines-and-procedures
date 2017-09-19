@@ -4,8 +4,14 @@ apply plugin: 'application'
 group = 'itx.backupng.server'
 version = '1.0.0-SNAPSHOT'
 mainClassName='itx.backupng.server.cli.Main'
+applicationDefaultJvmArgs = [
+        "-Dlog4j.configuration=file:./../config/log4j.properties"
+]
 
 dependencies {
     testCompile 'org.testng:testng:6.11'
 }
 
+applicationDistribution.from("src/main/config") {
+    into "config"
+}

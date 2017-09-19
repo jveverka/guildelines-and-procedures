@@ -25,8 +25,12 @@ public class Main {
 
         String target = System.getProperty("target");
         if (target == null) {
-            LOG.info("To override default connection parameters, use -Dtarget=host:port JVM option.");
-            target = DEFAULT_TARGET;
+            if (args.length > 0) {
+                target = args[0];
+            } else {
+                LOG.info("To override default connection parameters, use -Dtarget=host:port JVM option.");
+                target = DEFAULT_TARGET;
+            }
         }
         LOG.info("Connecting to server: {}", target);
 

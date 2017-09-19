@@ -4,9 +4,16 @@ apply plugin: 'application'
 group = 'itx.backupng.server'
 version = '1.0.0-SNAPSHOT'
 mainClassName = 'itx.backupng.server.Main'
+applicationDefaultJvmArgs = [
+        "-Dlog4j.configuration=file:./../config/log4j.properties",
+        "-Dconfiguration=../config/configuration.json",
+]
 
 dependencies {
     compile 'com.fasterxml.jackson.core:jackson-databind:2.9.1'
-
     testCompile 'org.testng:testng:6.11'
+}
+
+applicationDistribution.from("src/main/config") {
+    into "config"
 }
