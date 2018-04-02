@@ -1,0 +1,40 @@
+
+base-url: "https://gerrit.acumos.org/r/"
+
+projects:
+  - acumos-azure-client
+  - acumos-hippo-cms
+  - acumos-java-client
+  - acumos-nexus-client
+  - acumos-python-client
+  - acumos-r-client
+  - ci-management
+  - common-dataservice
+  - databroker
+  - design-studio
+  - documentation
+  - face-privacy-filter
+  - federation
+  - generic-model-runner
+  - h2o-toolkit
+  - image-classification
+  - image-mood-classifier
+  - iris-generic-java
+  - message-handling
+  - model-schema
+  - modeling-toolkit
+  - on-boarding
+  - openstack-client
+  - platform-oam
+  - portal-marketplace
+  - proto-viewer
+  - python-dcae-model-runner
+  - runtime-orchestrator
+  - system-integration
+  - test-automation
+  - test-models
+  - threat-analytics
+  - training
+  - validation-security
+  - vm-predictor
+
