@@ -6,6 +6,7 @@ import app_pong
 import app_snake
 import app_tetripisense
 import app_colors
+import app_invaders
 
 sense = SenseHat()
 
@@ -13,6 +14,7 @@ menu = [
          [[255,255,255],[255,255,255],[255,255,255],[255,255,255],[255,255,255]], 
          [[ 28, 28,255],[ 28, 28,255],[ 28, 28,255],[ 28, 28,255],[ 28, 28,255]], 
          [[255,255, 28],[255,255, 28],[255,255, 28],[255,255, 28],[255,255, 28]], 
+         [[ 28,255, 28],[ 28,255, 28],[ 28,255, 28],[ 28,255, 28],[ 28,255, 28]], 
          [[255,255, 28],[255, 28,255],[ 28,255, 28],[255, 28, 28],[ 28, 28,255]], 
          [[255, 28, 28],[255, 28, 28],[255, 28, 25],[255, 28, 28],[255, 28, 28]], 
        ]
@@ -72,6 +74,10 @@ def launch_action(menu_position):
        app_tetripisense.cleanup_game()
        start_launcher_menu(False)
     if menu_position == 3:
+       print("starting "+ str(menu_position) + "invaders")
+       app_invaders.run_main()
+       start_launcher_menu(False)
+    if menu_position == 4:
        print("starting "+ str(menu_position) + "colors")
        app_colors.rum_main()
        start_launcher_menu(False)
@@ -96,7 +102,7 @@ def start_launcher_menu(show_welcome):
 
 try:
    is_running = True
-   start_launcher_menu(True)
+   start_launcher_menu(False)
    while is_running:
         sleep(0.25)
    print("bye ...\n")

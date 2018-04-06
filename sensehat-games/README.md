@@ -3,6 +3,7 @@ This is simple implementation of selected RaspberryPi SenseHAT games in python3.
 * pong
 * snake
 * tetris
+* invaders
 * colors
 * launcher.py - simple menu to launch the games
 
