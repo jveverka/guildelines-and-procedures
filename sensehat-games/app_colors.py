@@ -5,7 +5,7 @@ from random import randrange
 
 sense = SenseHat()
 
-def rum_main():
+def run_main():
     sense.clear()
     for x in range(0,8):
         for y in range(0,8):

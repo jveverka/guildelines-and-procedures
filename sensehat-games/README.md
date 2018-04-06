@@ -5,6 +5,7 @@ This is simple implementation of selected RaspberryPi SenseHAT games in python3.
 * tetris
 * invaders
 * colors
+* gyro test app
 * launcher.py - simple menu to launch the games
 
 ### Install & Setup

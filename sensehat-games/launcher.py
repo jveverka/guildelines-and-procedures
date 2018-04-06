@@ -7,6 +7,8 @@ import app_snake
 import app_tetripisense
 import app_colors
 import app_invaders
+import app_standby
+import app_gyro
 
 sense = SenseHat()
 
@@ -16,6 +18,7 @@ menu = [
          [[255,255, 28],[255,255, 28],[255,255, 28],[255,255, 28],[255,255, 28]], 
          [[ 28,255, 28],[ 28,255, 28],[ 28,255, 28],[ 28,255, 28],[ 28,255, 28]], 
          [[255,255, 28],[255, 28,255],[ 28,255, 28],[255, 28, 28],[ 28, 28,255]], 
+         [[200,200,200],[ 48, 48,200],[ 48, 48,200],[ 48, 48,200],[200,200,200]], 
          [[255, 28, 28],[255, 28, 28],[255, 28, 25],[255, 28, 28],[255, 28, 28]], 
        ]
 
@@ -79,11 +82,16 @@ def launch_action(menu_position):
        start_launcher_menu(False)
     if menu_position == 4:
        print("starting "+ str(menu_position) + "colors")
-       app_colors.rum_main()
+       app_colors.run_main()
        start_launcher_menu(False)
+    if menu_position == 5:
+       print("starting "+ str(menu_position) + "gyro")
+       app_gyro.run_main()
+       start_launcher_menu(False) 
     if menu_position == (len(menu)-1):
-       print("exit "+ str(menu_position))
-       is_running = False
+       print("standby "+ str(menu_position))
+       app_standby.run_main()
+       start_launcher_menu(False)
     return 
 
 def start_launcher_menu(show_welcome):
