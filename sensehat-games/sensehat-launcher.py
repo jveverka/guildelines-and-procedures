@@ -9,6 +9,7 @@ import app_colors
 import app_invaders
 import app_standby
 import app_gyro
+import app_christmas
 
 sense = SenseHat()
 
@@ -19,6 +20,7 @@ menu = [
          [[ 28,255, 28],[ 28,255, 28],[ 28,255, 28],[ 28,255, 28],[ 28,255, 28]], 
          [[255,255, 28],[255, 28,255],[ 28,255, 28],[255, 28, 28],[ 28, 28,255]], 
          [[200,200,200],[ 48, 48,200],[ 48, 48,200],[ 48, 48,200],[200,200,200]], 
+         [[ 28,255, 28],[255, 28, 28],[ 28,255, 28],[255, 28, 28],[ 28,255, 28]], 
          [[255, 28, 28],[255, 28, 28],[255, 28, 25],[255, 28, 28],[255, 28, 28]], 
        ]
 
@@ -64,29 +66,33 @@ def launch_action(menu_position):
     global menu
     global is_running
     if menu_position == 0:
-       print("starting "+ str(menu_position) + "pong")
+       print("starting "+ str(menu_position) + " pong")
        app_pong.rum_main()
        start_launcher_menu(False)
     if menu_position == 1:
-       print("starting "+ str(menu_position) + "snake")
+       print("starting "+ str(menu_position) + " snake")
        app_snake.rum_main()
        start_launcher_menu(False)
     if menu_position == 2:
-       print("starting "+ str(menu_position) + "tertis")
+       print("starting "+ str(menu_position) + " tertis")
        app_tetripisense.run_game()
        app_tetripisense.cleanup_game()
        start_launcher_menu(False)
     if menu_position == 3:
-       print("starting "+ str(menu_position) + "invaders")
+       print("starting "+ str(menu_position) + " invaders")
        app_invaders.run_main()
        start_launcher_menu(False)
     if menu_position == 4:
-       print("starting "+ str(menu_position) + "colors")
+       print("starting "+ str(menu_position) + " colors")
        app_colors.run_main()
        start_launcher_menu(False)
     if menu_position == 5:
-       print("starting "+ str(menu_position) + "gyro")
+       print("starting "+ str(menu_position) + " gyro")
        app_gyro.run_main()
+       start_launcher_menu(False) 
+    if menu_position == 6:
+       print("starting "+ str(menu_position) + " christmas")
+       app_christmas.run_main()
        start_launcher_menu(False) 
     if menu_position == (len(menu)-1):
        print("standby "+ str(menu_position))
@@ -116,6 +122,8 @@ try:
    print("bye ...\n")
    sense.clear()
 except KeyboardInterrupt:
+   print("killed by key interrupt") 
+finally:
    print("killed !\n")
    sense.clear()
 
