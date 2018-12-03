@@ -43,6 +43,8 @@ snow = [
    [[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0,]],
 ]
 
+last_line = [[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0,]]
+
 is_running = False
 max_block_count = 1
 snow_color = [160, 160, 160]
@@ -112,6 +114,24 @@ def decrement_background_index(event):
     if background_index < 0:
        background_index = len(background) - 1 
 
+def draw_accumulated_snow(background):
+    global snow
+    global last_line
+    for x in range(len(last_line)):
+        if snow[7][x][0] != 0:
+           last_line[x] = copy(snow[7][x])
+    snow_accumulated = 0
+    for x in range(len(last_line)):
+        if last_line[x][0] != 0:
+           sense.set_pixel(x, 7, last_line[x][0], last_line[x][1], last_line[x][2])
+           snow_accumulated = snow_accumulated + 1
+    if snow_accumulated == 8:
+       #melt all accumulated snow
+       for x in range(len(last_line)):
+           last_line[x] = [0,0,0]
+           sense.set_pixel(x, 7, background[7][x][0], background[7][x][1], background[7][x][2])
+    return
+
 def run_main():
     print("entering x-mas mode")
     global is_running
@@ -125,6 +145,7 @@ def run_main():
     while is_running:
        draw_background(background[background_index])
        move_snow_down()
+       draw_accumulated_snow(background[background_index])
        sleep(1)
     sense.clear()
     sense.set_rotation(180)
