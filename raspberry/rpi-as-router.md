@@ -63,13 +63,18 @@ subnet 192.168.40.0 netmask 255.255.255.0 {
        range 192.168.40.10 192.168.40.250;
        option routers 192.168.40.1;
 }
-
 ```
 Also edit the file ``/etc/default/isc-dhcp-server`` to add the line:
 ```
 INTERFACESv4="eth0"
-INTERFACESv6="eth0"
+INTERFACESv6=""
 ```
+To control the DHCP server, use:
+```
+sudo systemctl restart isc-dhcp-server
+sudo systemctl status isc-dhcp-server
+```
+
 
 ### 5. Setup NAT and firewall
 
