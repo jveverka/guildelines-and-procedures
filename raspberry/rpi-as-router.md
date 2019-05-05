@@ -54,7 +54,7 @@ Install dhcp server ``sudo apt-get install isc-dhcp-server ``
 Then create and edit a new file ``/etc/dhcp/dhcpd.conf`` containing:
 ```
 option domain-name "example.org";
-option domain-name-servers ns1.example.org, ns2.example.org;
+option domain-name-servers 8.8.8.8, 8.8.4.4;
 default-lease-time 600;
 max-lease-time 7200;
 ddns-update-style none;
