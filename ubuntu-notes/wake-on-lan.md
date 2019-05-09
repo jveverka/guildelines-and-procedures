@@ -4,7 +4,7 @@
 Enable WOL in BIOS. After that, follow [this](http://timtalbot.co.uk/setting-up-wake-on-lan-on-ubuntu-server-18-04-lts/) manual. 
 ```
 sudo apt-get install ethtool
-sudo /etc/systemd/system/vim wol.service
+sudo vi /etc/systemd/system/wol.service
 ```
 The content of ``wol.service`` is following:
 ```
