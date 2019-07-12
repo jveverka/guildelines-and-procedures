@@ -2,14 +2,27 @@
 Some notes on kubernetes setup on Ubuntu 18.04.2 LTS servers.
 
 ## How to setup kubernetes cluster
-This 10-minute how-to is crafted for Ubuntu Server 18.04.2 LTS using [this](https://www.linuxtechi.com/install-configure-kubernetes-ubuntu-18-04-ubuntu-18-10/) and
+This 10-minute guide is crafted for Ubuntu Server 18.04.2 LTS based on [this](https://www.linuxtechi.com/install-configure-kubernetes-ubuntu-18-04-ubuntu-18-10/) and
 [this](https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/#pod-network) manuals.
 
 ### Network topology
-Assuming master kubernes node at 192.168.56.101 and workers at 192.168.56.102, 192.168.56.103, ...
-All nodes are visible amongst each other.
+Assuming master kubernetes node at 192.168.56.101 and workers at 192.168.56.102, 192.168.56.103, ...
+All nodes are visible amongst each other. IP addresses of the nodes does not change after k8s installation.
+This network setup is suitable for bare metal installation.
 
-### On all nodes
+![network](docs/k8s-network-setup.svg)
+
+### VirtualBox networking setup
+In case running all 3 nodes as VMs on VirtualBox, following setup is recommended:
+* each VM has exactly one network interface
+* network adapter is setup using "Host-only adapter" vboxnet0
+* using VirtualBox global tools -> Host Network manager and make sure vboxnet0 
+  network 192.168.56.1/24 is created.
+* if DHCP is on, once make sure that assigned IP addresses does not change for VMs once assigned.  
+* if DHCP is off, use statically assigned IP addresses.
+* use NAT setup to provide inetrnet access for k8s nodes.
+
+### Execute on all nodes
 This is basic node setup for all kubernetes cluster nodes (master and all workers).
 Assuming bare Ubuntu Server 18.04.2 LTS was installed with ssh server.
 ```
@@ -24,8 +37,8 @@ sudo swapoff -a
 sudo apt-get install kubeadm -y
 ```
 
-### On master node
-Init kubernetes master node, use flannel networking:
+### Execute on master node
+Setup master. Init kubernetes master node, use flannel networking:
 ```
 sudo kubeadm init --pod-network-cidr=10.244.0.0/16
 ```
