@@ -27,7 +27,7 @@ sudo apt-get install kubeadm -y
 ### On master node
 Init kubernetes master node, use flannel networking:
 ```
-kubeadm init --pod-network-cidr=10.244.0.0/16
+sudo kubeadm init --pod-network-cidr=10.244.0.0/16
 ```
 Last __kubeadm init__ command prints out token and token CA cert hash. Save those for worker node setup.
 
@@ -43,7 +43,7 @@ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/a70459be008450
 ### Attach worker nodes
 On each worker node, run __kubeadm join__ like example below. You will get exact token values from previous run of __kubeadm init__ on master node.
 ```
-kubeadm join 192.168.56.101:6443 --token zvrxax.gfhprvpi8bioefg1 --discovery-token-ca-cert-hash sha256:01efb4c09278a75ec2df7472e6754ad0d8ce1756730acb40b8c89ab03425a31d
+sudo kubeadm join 192.168.56.101:6443 --token zvrxax.gfhprvpi8bioefg1 --discovery-token-ca-cert-hash sha256:01efb4c09278a75ec2df7472e6754ad0d8ce1756730acb40b8c89ab03425a31d
 ```
 
 ### Check cluster status
