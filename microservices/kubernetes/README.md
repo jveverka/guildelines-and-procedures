@@ -1,4 +1,4 @@
-# Kubernetes notes
+# Kubernetes setup and microservices
 Some notes on kubernetes setup on Ubuntu 18.04.2 LTS servers.
 
 ## How to setup kubernetes cluster
@@ -18,7 +18,7 @@ In case running all 3 nodes as VMs on VirtualBox, following setup is recommended
 * network adapter is setup using "Host-only adapter" vboxnet0
 * using VirtualBox global tools -> Host Network manager and make sure vboxnet0 
   network 192.168.56.1/24 is created.
-* if DHCP is on, once make sure that assigned IP addresses does not change for VMs once assigned.  
+* if DHCP is on, once make sure that assigned IP addresses does not change for VMs once assigned.
 * if DHCP is off, use statically assigned IP addresses.
 * use NAT setup to provide inetrnet access for k8s nodes.
 
@@ -35,6 +35,7 @@ sudo apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
 sudo swapoff -a	
 #disable swap by editing /etc/fstab, it remains disabled abter reboot
 sudo apt-get install kubeadm -y
+#add normal user on node into docker group
 ```
 
 ### Execute on master node
@@ -65,6 +66,10 @@ Check if nodes (cluster is running properly) on master.
 sudo kubectl get nodes
 sudo kubectl get pods --all-namespaces
 ```
+
+## Other useful tips
+* [How to import and manage custom docker image](docs/CustomImages.md)
+* [How to create and manage custom deployment](docs/CustomDeployment.md) 
 
 ## Single node Kubernetes
 [microk8s](https://microk8s.io/) [docs](https://microk8s.io/docs/)
