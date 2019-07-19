@@ -68,6 +68,7 @@ sudo kubectl get pods --all-namespaces
 ```
 
 ## Other useful tips
+* [How to setup Web UI dashboard](docs/SetupWebDashboard.md)
 * [How to import and manage custom docker image](docs/CustomImages.md)
 * [How to create and manage custom deployment](docs/CustomDeployment.md) 
 
