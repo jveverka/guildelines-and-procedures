@@ -6,9 +6,9 @@ Copy deployment yaml file on kubernetes master into /opt/deployments.
 Create deployment:
 ```
 cd /opt/deployments
-kubectl create -f service-simple-rest-deployment.yaml
+kubectl apply -f service-simple-rest-deployment.yaml
 kubectl describe deployments
-kubectl describe deployment simple-rest-service
+kubectl describe deployment simple-rest
 ```
 
 Remove deployment:
@@ -17,5 +17,6 @@ Remove deployment:
 kubectl get all
 
 # remove deployment.apps/simple-rest-service
-kubectl delete deployment.apps/simple-rest-service
+kubectl delete deployment.apps/simple-rest
+kubectl delete service/simple-rest
 ```

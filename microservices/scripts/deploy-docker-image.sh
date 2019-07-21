@@ -14,7 +14,7 @@ for IP_ADDR in 192.168.56.101 192.168.56.102 192.168.56.103; do
     echo "processing IP: $IP_ADDR"
     scp -i controlkey.pri $IMAGE_FILE_PATH juraj@$IP_ADDR:/opt/images/
     ssh -i controlkey.pri juraj@$IP_ADDR docker image rm $IMAGE_TAG
-    ssh -i controlkey.pri juraj@$IP_ADDR docker import /opt/images/$IMAGE_FILE $IMAGE_TAG
+    ssh -i controlkey.pri juraj@$IP_ADDR docker load --input /opt/images/$IMAGE_FILE $IMAGE_TAG
 done
 
 

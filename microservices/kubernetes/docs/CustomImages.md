@@ -4,7 +4,7 @@ Once you have created your custom docker image, you need to import it into docke
 ```
 scp my-image\:1.0.0-SNAPSHOT.tar user@kube-node:/opt/images
 cd /opt/images
-docker import my-image\:1.0.0-SNAPSHOT.tar my-image:1.0.0-SNAPSHOT
+docker load --input my-image\:1.0.0-SNAPSHOT.tar 
 docker image ls 
 ```
 
