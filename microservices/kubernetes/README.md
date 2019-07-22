@@ -33,7 +33,7 @@ sudo apt-get install apt-transport-https curl -y
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add
 sudo apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
 sudo swapoff -a	
-#disable swap by editing /etc/fstab, it remains disabled abter reboot
+#disable swap by editing /etc/fstab, so it remains disabled after reboot
 sudo apt-get install kubeadm -y
 #add normal user on node into docker group
 ```
@@ -72,6 +72,23 @@ sudo kubectl get pods --all-namespaces
 * [How to import and manage custom docker image](docs/CustomImages.md)
 * [How to create and manage custom deployment](docs/CustomDeployment.md) 
 
+## Minikube
+[Minikube](https://github.com/kubernetes/minikube) is single-node sandbox for quick k8s prototyping. Installation is really easy:
+```
+sudo apt-get update && sudo apt-get install -y apt-transport-https
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
+sudo apt-get update
+sudo apt-get install -y kubectl
+curl -Lo minikube https://storage.googleapis.com/minikube/releases/v1.2.0/minikube-linux-amd64 && chmod +x minikube && sudo cp minikube /usr/local/bin/ && rm minikube
+```
+Start minikube. On Linux, no vm-driver is required.
+```
+sudo minikube start --vm-driver=none
+sudo minikube dashboard
+```
+Follow this [setup guide](https://kubernetes.io/docs/setup/learning-environment/minikube/).
+
 ## Single node Kubernetes
 [microk8s](https://microk8s.io/) [docs](https://microk8s.io/docs/)
 ```
@@ -79,4 +96,5 @@ snap info microk8s
 sudo microk8s.stop
 sudo microk8s.start
 ```
+
 
