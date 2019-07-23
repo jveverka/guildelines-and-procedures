@@ -41,8 +41,10 @@ sudo apt-get install kubeadm -y
 ### Execute on master node
 Setup master. Init kubernetes master node, use flannel networking:
 ```
-sudo kubeadm init --pod-network-cidr=10.244.0.0/16
+sudo kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address &lt;IP-ADDR-API&gt;
 ```
+Where __IP-ADDR-API__ is for example 192.168.56.101. WARN: API server address MUST be different network as POD CIDR !
+
 Last __kubeadm init__ command prints out token and token CA cert hash. Save those for worker node setup.
 
 As regular user, finish the setup:
