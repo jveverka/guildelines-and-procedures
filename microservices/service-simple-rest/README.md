@@ -1,3 +1,7 @@
+# Simple stateless REST service
+This is simple demo of stateless REST service.
+it responds to single GET request.
+
 ### Build and run
 ```
 gradle clean build 
@@ -15,3 +19,11 @@ docker run -p 8888:8080 service-simple-rest:1.0.0-SNAPSHOT
 
 ### REST endpoint
 * __GET__ ``http://hostname:port/data/info``
+
+``curl -X GET http://localhost:8080/data/info``
+
+### Kubernetes deployment
+[yaml](service-simple-rest-deployment.yaml) file describes deployment into kubernetes cluster. 
+This deploys two instances of REST service behind single __load balancer__.
+Load-balanced service is accessible master kubernetes node using URL:
+``curl -X GET http://<kube-master>:30081/data/info`` 
