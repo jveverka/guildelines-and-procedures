@@ -37,6 +37,12 @@ spec:
         - name: akka-k8s-cluster
           image: akka-k8s-cluster:1.0.0-SNAPSHOT
           imagePullPolicy: IfNotPresent
+          env:
+            - name: HOSTNAME
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: status.podIP
           ports:
             # akka remoting
             - name: remoting
