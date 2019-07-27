@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "itx.devices.iocontroller.protobuf";
+option java_outer_classname = "SimpleServiceProto";
+option objc_class_prefix = "HLW";
+
+service IOController {
+
+    rpc GetVersion (GetVersionRequest) returns (GetVersionReply) {}
+
+    rpc ControllerChannel (stream ControllMessage) returns (stream DataMessage) {}
+
+}
+
+message GetVersionRequest {
+}
+
+message GetVersionReply {
+    string major = 1;
+    string minor = 2;
+    string patch = 3;
+}
+
+message ControllMessage {
+
+}
+
+message DataMessage {
+
+}
