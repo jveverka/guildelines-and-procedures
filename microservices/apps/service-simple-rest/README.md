@@ -24,6 +24,15 @@ docker run -p 8888:8080 service-simple-rest:1.0.0-SNAPSHOT
 
 ### Kubernetes deployment
 [yaml](service-simple-rest-deployment.yaml) file describes deployment into kubernetes cluster. 
+```
+kubectl apply -f service-simple-rest-deployment.yaml
+```
+
 This deploys two instances of REST service behind single __load balancer__.
 Load-balanced service is accessible master kubernetes node using URL:
-``curl -X GET http://<kube-master>:30081/data/info`` 
+```
+for i in {1..1000}; do
+   curl -X GET http://<kube-master>:30081/data/info
+   echo ""
+done   
+``` 

@@ -1,6 +1,9 @@
 package itx.examples.springboot.simplerest.rest;
 
+import itx.examples.springboot.simplerest.config.AppConfig;
+import itx.examples.springboot.simplerest.dto.PodInfo;
 import itx.examples.springboot.simplerest.dto.SystemInfo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +21,9 @@ public class DataServiceRest {
     private final String instanceId;
     private final AtomicLong requestCounter;
 
+    @Autowired
+    private AppConfig appConfig;
+
     public DataServiceRest() {
         this.instanceId = UUID.randomUUID().toString();
         this.requestCounter = new AtomicLong(0);
@@ -25,7 +31,8 @@ public class DataServiceRest {
 
     @GetMapping(path = "/info", produces = MediaType.APPLICATION_JSON_VALUE )
     public SystemInfo getSystemInfo() {
-        return new SystemInfo(NAME_VERSION, System.currentTimeMillis(), instanceId, requestCounter.incrementAndGet());
+        PodInfo podInfo = new PodInfo(appConfig.getPodIP(), appConfig.getPodName(), appConfig.getNodeName());
+        return new SystemInfo(NAME_VERSION, System.currentTimeMillis(), instanceId, requestCounter.incrementAndGet(), podInfo);
     }
 
 }

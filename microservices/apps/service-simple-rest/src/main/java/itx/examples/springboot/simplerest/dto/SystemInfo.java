@@ -6,12 +6,14 @@ public class SystemInfo {
     private final long timestamp;
     private final String instanceId;
     private final long requestCounter;
+    private final PodInfo podInfo;
 
-    public SystemInfo(String name, long timestamp, String instanceId, long requestCounter) {
+    public SystemInfo(String name, long timestamp, String instanceId, long requestCounter, PodInfo podInfo) {
         this.name = name;
         this.timestamp = timestamp;
         this.instanceId = instanceId;
         this.requestCounter = requestCounter;
+        this.podInfo = podInfo;
     }
 
     public String getName() {
@@ -28,5 +30,9 @@ public class SystemInfo {
 
     public long getRequestCounter() {
         return requestCounter;
+    }
+
+    public PodInfo getPodInfo() {
+        return podInfo;
     }
 }
