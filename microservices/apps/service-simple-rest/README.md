@@ -21,6 +21,7 @@ docker run -p 8888:8080 service-simple-rest:1.0.0-SNAPSHOT
 * __GET__ ``http://hostname:port/data/info``
 
 ``curl -X GET http://localhost:8080/data/info``
+``curl -X GET http://localhost:8080/data/compute/pi/{precision}`` where precision is in range 0 .. 10, 10 is max. precision
 
 ### Kubernetes deployment
 [yaml](service-simple-rest-deployment.yaml) file describes deployment into kubernetes cluster. 
