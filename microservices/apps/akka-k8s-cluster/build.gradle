@@ -11,7 +11,7 @@ group    = 'itx.examples.akka.k8s'
 version  = '1.0.0'
 
 application {
-    applicationDefaultJvmArgs = ['-Dconfig.override_with_env_vars=true' ]
+    applicationDefaultJvmArgs = ['-Xms32m', '-Xms128M', '-Dconfig.override_with_env_vars=true']
 }
 
 repositories {
