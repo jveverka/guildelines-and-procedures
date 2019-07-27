@@ -39,7 +39,7 @@ public class DataServiceRest {
 
     @GetMapping(path = "/compute/pi/{precision}", produces = MediaType.APPLICATION_JSON_VALUE )
     public ComputeResult getComputation(@PathVariable("precision") int precision) {
-        //This algorithm calculates PI by summing partial results 
+        //This algorithm calculates PI by summing partial results
         // PI = (4/1) - (4/3) + (4/5) - (4/7) + (4/9) - (4/11) + (4/13) - (4/15) ...
         long timeStamp = System.nanoTime();
         int max = 1000;
@@ -64,7 +64,7 @@ public class DataServiceRest {
             operation = !operation;
         }
         float duration = (System.nanoTime() - timeStamp) / 1_000_000F;
-        return new ComputeResult(pi, "PI", duration, max);
+        return new ComputeResult(pi, "PI", duration, max, appConfig.getPodName());
     }
 
 }

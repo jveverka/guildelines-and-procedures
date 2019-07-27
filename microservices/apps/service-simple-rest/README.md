@@ -1,6 +1,6 @@
 # Simple stateless REST service
 This is simple demo of stateless REST service.
-it responds to single GET request.
+it responds to single GET requests.
 
 ### Build and run
 ```

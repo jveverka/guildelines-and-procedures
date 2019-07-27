@@ -6,12 +6,14 @@ public class ComputeResult {
     private final String unit;
     private final float durationMs;
     private final int iterations;
+    private final String nodeId;
 
-    public ComputeResult(double result, String unit, float durationMs, int iterations) {
+    public ComputeResult(double result, String unit, float durationMs, int iterations, String nodeId) {
         this.result = result;
         this.unit = unit;
         this.durationMs = durationMs;
         this.iterations = iterations;
+        this.nodeId = nodeId;
     }
 
     public double getResult() {
@@ -30,4 +32,7 @@ public class ComputeResult {
         return iterations;
     }
 
+    public String getNodeId() {
+        return nodeId;
+    }
 }
