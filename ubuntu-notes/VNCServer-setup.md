@@ -37,6 +37,8 @@ sudo apt install tightvncserver
   ```
   vncserver -geometry 1440x900
   ```
+  Check the ordinal of VNC server instance which has been started.
+* VNC server :1 is listening on port 5901, :2 -> 5902 and so on.
 * Stop VNC server
   ```
   vncserver -kill :1
