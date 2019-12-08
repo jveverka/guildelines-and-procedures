@@ -24,6 +24,13 @@ sudo apt install tightvncserver
 * Edit config file ``.vnc/xstartup`` configuration file.
   * comment out last line ``#/etc/X11/Xsession`` 
   * add new lasts line ``startxfce4 &``
+  * resulting ``.vnc/xstartup`` will have content like this:
+    ```
+    #!/bin/sh
+
+    xrdb $HOME/.Xresources
+    startxfce4 &
+    ```
 
 ### Normal usage
 * Start VNC server, resolutions: 1024x768, 1280x1024, 1280×720, 1440x900, 1920×1080
