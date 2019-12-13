@@ -1,5 +1,6 @@
 # AWS scripting
 Simple examples of AWS CLI scripting in python and shell.
+See also [this](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/quickstart.html) guide.
 
 ## Install depencencies
 ```
