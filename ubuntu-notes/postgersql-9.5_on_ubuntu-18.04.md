@@ -13,5 +13,14 @@ older version 9.5 of PostgeSQL.
    sudo dpkg -i postgresql-client-9.5_9.5.19-0ubuntu0.16.04.1_amd64.deb postgresql-9.5_9.5.19-0ubuntu0.16.04.1_amd64.deb
    ```
 3. Configure PostgeSQL server.
+   ```
+   # config files
+   /etc/postgresql/9.5/main/postgresql.conf
+   /etc/postgresql/9.5/main/pg_hba.conf 
+   ```
 4. Start / Stop database server.
-   
+   ```
+   sudo systemctl status postgresql
+   sudo systemctl stop postgresql
+   sudo systemctl start postgresql
+   ```

@@ -1,4 +1,5 @@
 # Wake-On LAN setup
+This guide works only if WOL __Server__ and __client__ are on same ethernet LAN segment.
 
 ## Setup server
 Enable WOL in BIOS. After that, follow [this](http://timtalbot.co.uk/setting-up-wake-on-lan-on-ubuntu-server-18-04-lts/) manual. 
