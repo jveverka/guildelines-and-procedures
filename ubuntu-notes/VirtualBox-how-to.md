@@ -1,5 +1,5 @@
 # VirtualBox HOW-TO
-Cheat-sheet of VirtualBox comanndline tools.
+Cheat-sheet of VirtualBox commandline tools.
 
 ### VM life cycle
 ```
