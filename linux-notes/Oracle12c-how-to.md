@@ -151,7 +151,16 @@ yum install oracle-rdbms-server-12cR1-preinstall
   service oracledb stop
   service oracledb status
   ```
-  
+
+## Tips and Tricks
+* run sql script using CLI:
+  ``sqlplus -S SYSTEM/*******@192.168.44.215:1521/orcl @test.sql``
+  Script content:
+  ```
+  SELECT * FROM v$version;
+  quit;
+  /
+  ```  
   
 ### References
 * [Install Oracle 12c on Centos7](https://www.tecmint.com/install-oracle-database-12c-on-centos-7/).
