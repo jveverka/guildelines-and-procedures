@@ -2,11 +2,12 @@
 
 ## Check DB server setup
 ```
-SELECT * FROM v$version;
-SELECT * FROM DBA_DIRECTORIES;
-SELECT * FROM dba_users;
-SELECT * FROM DBA_TABLES WHERE owner='USERNAME';
-SELECT count(*) FROM DBA_TABLES WHERE owner='USERNAME';
+sqlplus SYSTEM/Secret123@127.0.0.1:1521/orcl
+  SELECT * FROM v$version;
+  SELECT * FROM DBA_DIRECTORIES;
+  SELECT * FROM dba_users;
+  SELECT * FROM DBA_TABLES WHERE owner='USERNAME';
+  SELECT count(*) FROM DBA_TABLES WHERE owner='USERNAME';
 ```
 
 ## Export schema (database)
@@ -32,6 +33,7 @@ END;
 Copy schema dump file into ``DATA_PUMP_DIR`` directory.
 Prepare users and roles for import.
 ```
+alter session set "_oracle_script"=true;
 DROP USER <SCHEMA_NAME> CASCADE;
 CREATE USER <SCHEMA_NAME> IDENTIFIED BY <password>;
 GRANT DBA to <SCHEMA_NAME>;
@@ -52,5 +54,5 @@ END;
 ```
 SQL import command using SQL developer
 ```
-impdp ...
+impdp SYSTEM/<password>@<hostname>:<port>/<SID> SCHEMAS=<SCHEMA_NAME> DIRECTORY=DATA_PUMP_DIR DUMPFILE=<DUMP_FILE>.dmp LOGFILE=<LOG_FILE>.log
 ```
