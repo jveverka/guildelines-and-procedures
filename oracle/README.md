@@ -2,7 +2,7 @@
 
 ## Check DB server setup
 ```
-sqlplus SYSTEM/Secret123@127.0.0.1:1521/orcl
+sqlplus SYSTEM/<password>@127.0.0.1:1521/orcl
   SELECT * FROM v$version;
   SELECT * FROM DBA_DIRECTORIES;
   SELECT * FROM dba_users;
@@ -56,3 +56,10 @@ SQL import command using SQL developer
 ```
 impdp SYSTEM/<password>@<hostname>:<port>/<SID> SCHEMAS=<SCHEMA_NAME> DIRECTORY=DATA_PUMP_DIR DUMPFILE=<DUMP_FILE>.dmp LOGFILE=<LOG_FILE>.log
 ```
+
+## Run SQL script 
+This is how *.sql script can be deployed automatically using ``sqlplus`` CLI. 
+```
+sqlplus -S SYSTEM/<password>@127.0.0.1:1521/<SID> @./script-example.sql
+```
+
