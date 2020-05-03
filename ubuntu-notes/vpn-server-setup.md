@@ -1,5 +1,5 @@
 # OpenVPN server setup
-For basic setup, follow [this](https://help.ubuntu.com/lts/serverguide/openvpn.html.en) manual. 
+For basic setup, follow [this](https://ubuntu.com/server/docs/service-openvpn) manual. 
 This guide describes pretty well how to setup server and clients.
 
 ## Static IP address for client
