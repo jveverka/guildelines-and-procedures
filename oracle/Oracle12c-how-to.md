@@ -61,8 +61,15 @@ YuQ3XrKxBkOLips+OZuWNVZzrPOHsenb49aX4yQsLVc2E2fhKQ==
   ./runInstaller 
   # follow installer instructions
   ```
+  * leave unchecked "I wish to receive security ..."
+  * enter email - any email may  not be valid or press escape. 
   * System Class - Desktop Class
+  * Use default values suggested by installer.
 * After installation has completed try [web ui](https://localhost:5500/em).
+* In case of re-installation:
+  ```
+  rm -rf /home/oracle/app/oraInventory
+  ```
 
 ## Post-Install setup
 * As a root user: Change the ``/etc/oratab`` entry from  “N” to  “Y”
