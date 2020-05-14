@@ -13,6 +13,7 @@ so it will be easier to use VM with UI. Use 40GB disk size, 4GB RAM and 1 CPU.
 
 ## Add Oracle repository
 Based on [this](https://www.oracle.com/technetwork/articles/servers-storage-admin/ginnydbinstallonlinux-488779.html) article.
+Run as root or use ``sudo``.
 ```
 cd /etc/yum.repos.d
 wget http://yum.oracle.com/public-yum-ol6.repo
@@ -44,13 +45,15 @@ YuQ3XrKxBkOLips+OZuWNVZzrPOHsenb49aX4yQsLVc2E2fhKQ==
 ```
 
 ## Install Oracle DB
-```
-yum install oracle-rdbms-server-12cR1-preinstall
-```
+* Install dependencies and prerequisities
+  ```
+  sudo yum install ksh gcc libaio-devel gcc-c++ compat-libcap1 compat-libstdc++-33
+  sudo yum install oracle-rdbms-server-12cR1-preinstall
+  ```
 * Download database installation binary [linuxx64_12201_database.zip](https://www.oracle.com/database/technologies/oracle12c-linux-12201-downloads.html), into ``/opt``.
 * extract installation binary file in ``/opt`` directory.
   ```
-  unzip linuxx64_12201_database.zip
+  sudo unzip linuxx64_12201_database.zip
   ```
 * As user ``oracle`` start oracle intaller. 
   ```
@@ -58,6 +61,7 @@ yum install oracle-rdbms-server-12cR1-preinstall
   ./runInstaller 
   # follow installer instructions
   ```
+  * System Class - Desktop Class
 * After installation has completed try [web ui](https://localhost:5500/em).
 
 ## Post-Install setup
