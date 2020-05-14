@@ -151,6 +151,10 @@ YuQ3XrKxBkOLips+OZuWNVZzrPOHsenb49aX4yQsLVc2E2fhKQ==
 
   exit $RETVAL
   ```
+* make init script executable
+  ```
+  chmod 755 /etc/init.d/oracledb
+  ```  
 * enable init script
   ```
   chkconfig --add oracledb
