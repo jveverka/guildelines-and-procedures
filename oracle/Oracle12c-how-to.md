@@ -2,8 +2,8 @@
 Install [centos6](http://linux.mirrors.es.net/centos/6.10/isos/x86_64/), unfortunately Oracle provide installer with UI, 
 so it will be easier to use VM with UI. Use 40GB disk size, 4GB RAM and 1 CPU. 
 * Swap size must be 4GB or more.
-* Install with profile ``Minomal Desktop``
-* Create user ``oracle``
+* Install with profile ``Minimal Desktop``
+* Create user ``oracle`` and add this user to ``/etc/sudoers``
 * Update installation and install additional packages.
   ```
   yum update
