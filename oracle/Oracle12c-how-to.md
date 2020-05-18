@@ -94,7 +94,7 @@ YuQ3XrKxBkOLips+OZuWNVZzrPOHsenb49aX4yQsLVc2E2fhKQ==
 * start database as ``oracle`` user
   ```
   cd /home/oracle/app/oracle/product/12.2.0/dbhome_1/bin/
-  ./dbstart
+  ./dbstart $ORACLE_HOME
   ./lsnrctl start
   ```  
 * Test database connection 
