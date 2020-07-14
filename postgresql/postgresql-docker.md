@@ -40,3 +40,10 @@ docker run --name postgresql_10 -itd --restart always \
   docker stop <imageId>
   ```
 * Restore database using ``pg_restore``  
+
+## Use official PostgeSQL image
+```
+docker run -p 5432:5432 --name postgres-server -e POSTGRES_PASSWORD=secret -d postgres:12.3-alpine
+docker stop postgres-server
+docker rm postgres-server
+```
