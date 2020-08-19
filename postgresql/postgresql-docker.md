@@ -46,4 +46,8 @@ docker run --name postgresql_10 -itd --restart always \
 docker run -p 5432:5432 --name postgres-server -e POSTGRES_PASSWORD=secret -d postgres:12.3-alpine
 docker stop postgres-server
 docker rm postgres-server
+
+#attach to running container to check databases and tables
+docker container exec -it postgres-server /bin/bash
+# psql -U postgres
 ```
