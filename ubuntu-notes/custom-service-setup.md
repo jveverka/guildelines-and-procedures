@@ -33,7 +33,7 @@ WantedBy=multi-user.target
 
 ## Install and activate service
 ```
-sudo mv myservice.service /etc/systemd/system/
+sudo cp myservice.service /etc/systemd/system/
 sudo chown root:root /etc/systemd/system/myservice.service
 sudo systemctl daemon-reload
 sudo systemctl enable myservice
