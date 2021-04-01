@@ -1,4 +1,4 @@
-# Small DC
+# Small/home Data Center
 
 This is project of small (potentially portable) data center.
 Main goals of this project: 
@@ -6,6 +6,7 @@ Main goals of this project:
 * distributed systems / clustering testing.
 * microservice playground.
 * networking playground.
+* low  power design 25W idle. 
 
 ![architecture](docs/architecture-01.svg)
 
