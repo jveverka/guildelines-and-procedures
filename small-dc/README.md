@@ -25,7 +25,7 @@ The internal network: CIDR=192.168.44.0/24
 | HW Component        | Description     | Power   |
 |---------------------|-----------------|---------|
 | 1G Ethernet Switch  | TP-Link         |  12V    |
-| Power Supply        | AC-DC converter |  5, 12V |
+| [Power Supply](docs/power-supply.md)        | AC-DC converter |  ~230V -> DC 5, 12V |
 
 ### Public OpenVPN-Server
 
