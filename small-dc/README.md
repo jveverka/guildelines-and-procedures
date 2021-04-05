@@ -37,5 +37,6 @@ The internal network: CIDR=192.168.44.0/24
 
 ### Data-Backup
 
-
+## Network Topology
+![network-topology](docs/network-topology.svg)
 
