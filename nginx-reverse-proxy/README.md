@@ -1,4 +1,4 @@
-# Using NGINX with Angular and Spring 
+# Using NGINX as Reverse Proxy  
 
 This simple setup shows how to run Angular UI and java web backend.
 NGINX is runnig as reverse proxy in this case.
