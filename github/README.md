@@ -9,7 +9,7 @@ This is short summary on how to propose pull request to 3-rd party project on gi
   ```git add remote upstream https://github.com/TheRepository/the-project.git```
 
 ## Propose pull request procedure
-* Switch to brach which you want to propose pull request.
+* Switch to branch which you want to propose pull request.
   ```git checkout master```
 * Update master branch from remote source and push it to your forked repo.
   ```
@@ -18,7 +18,7 @@ This is short summary on how to propose pull request to 3-rd party project on gi
   ``` 
 * Create new branch just for this pull request.
   ```git checkout -b master_fix-issue-name``` 
-* Make chenges and commit them locally.
+* Make changes and commit them locally.
   ```
   git add .
   git commit -a -m "my commit message"
