@@ -38,4 +38,9 @@ sudo usermod -aG docker MYUSERNAME
    ```
    curl --location --request GET 'http://localhost:6000/v2/_catalog'
    ```
-   
+5. Push some images into the registry
+   ```
+   docker pull ubuntu:20.04
+   docker tag ubuntu:20.04 localhost:5000/my-ubuntu
+   docker push localhost:5000/my-ubuntu
+   ```
