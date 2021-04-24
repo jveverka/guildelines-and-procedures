@@ -9,3 +9,21 @@ docker run -d --name mongo-db \
     -v /opt/data/mongo-data:/data/db \
     mongo:4.4.4-bionic
 ```
+
+```
+./mongosh --username mongoadmin --password --host localhost:27017
+show dbs
+use my-db-name
+db.createUser(
+  {
+    user: "my-admin",
+    pwd: passwordPrompt(),
+    roles: [
+       { role: "userAdmin", db: "my-db-name" },
+       { role: "dbOwner", db: "my-db-name" },
+       { role: "readWrite", db: "my-db-name" }
+    ]
+  }
+)
+./mongosh --username my-admin --password --authenticationDatabase my-db-name "mongodb://localhost:27017/my-db-name
+```
