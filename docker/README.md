@@ -25,7 +25,7 @@ sudo usermod -aG docker MYUSERNAME
     "registry-mirrors": ["http://localhost:6000"]
    }
    ```
-   Restart docker deamon.
+   Restart docker daemon.
    ```
    sudo systemctl stop docker
    sudo systemctl start docker
