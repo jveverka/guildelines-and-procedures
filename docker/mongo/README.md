@@ -25,5 +25,5 @@ db.createUser(
     ]
   }
 )
-./mongosh --username my-admin --password --authenticationDatabase my-db-name "mongodb://localhost:27017/my-db-name
+./mongosh --username my-admin --password --authenticationDatabase my-db-name "mongodb://localhost:27017/my-db-name"
 ```
