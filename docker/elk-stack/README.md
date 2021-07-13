@@ -1,5 +1,7 @@
 # ELK stack
 
+![architecture](docs/elk-stack.svg)
+
 ### Elastic Search
 
 ```
