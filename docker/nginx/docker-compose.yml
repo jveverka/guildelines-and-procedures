@@ -2,7 +2,7 @@ version: '2'
 services:
   nginx-proxy:
     build: ./nginx-docker
-    image: nginx:1.19.10-alpine
+    image: nginx:1.21.1-alpine
     network_mode: "host"
     container_name: nginx-proxy
     ports:

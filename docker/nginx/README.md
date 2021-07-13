@@ -1,6 +1,7 @@
 # NGINX as Docker
 
 ```
+export ARCH=amd64|arm64v8
 docker stop nginx-proxy;
 docker rm nginx-proxy;
 docker build -t nginx-proxy .;
