@@ -2,6 +2,11 @@
 
 ![architecture](docs/elk-stack.svg)
 
+```
+docker-compose up -d
+docker-compose down -v --rmi all --remove-orphans
+```
+
 ### Elastic Search
 
 ```
@@ -18,6 +23,7 @@ docker stop elasticsearch
 docker rm elasticsearch
 ```
 ```
+curl http://localhost:9200/_cluster/health
 curl http://localhost:9200/_cat/master
 curl http://localhost:9200/_cat/indices
 ```
@@ -35,9 +41,13 @@ docker run -d --name logstash \
 
 ### Kibana
 ```
-docker run --name kibana \
+docker run -d --name kibana \
   --restart unless-stopped \
   -p 5601:5601 \
   -e "ELASTICSEARCH_HOSTS=http://localhost:9200" \
   docker.elastic.co/kibana/kibana:7.13.3
+docker logs -f kibana
+docker stop kibana
+docker rm kibana
 ```
+http://localhost:5601/
