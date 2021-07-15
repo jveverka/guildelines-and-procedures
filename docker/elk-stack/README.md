@@ -12,7 +12,7 @@ docker run -d --name elasticsearch \
   -p 9200:9200 -p 9300:9300 \
   -e "discovery.type=single-node" \
   -v "/opt/data/elasticsearch-data:/usr/share/elasticsearch/data" \
-  elasticsearch:7.13.2
+  elasticsearch:7.13.3
 docker logs -f elasticsearch
 docker stop elasticsearch
 docker rm elasticsearch
@@ -30,5 +30,14 @@ docker run -d --name logstash \
   -e "monitoring.elasticsearch.hosts=http://localhost:9200" \
   -e "xpack.monitoring.enabled=false" \
   -v "/opt/data/logstash-data/logstash.conf:/usr/share/logstash/config/logstash.conf" \
-  docker.elastic.co/logstash/logstash:7.13.2
+  docker.elastic.co/logstash/logstash:7.13.3
+```
+
+### Kibana
+```
+docker run --name kibana \
+  --restart unless-stopped \
+  -p 5601:5601 \
+  -e "ELASTICSEARCH_HOSTS=http://localhost:9200" \
+  docker.elastic.co/kibana/kibana:7.13.3
 ```
