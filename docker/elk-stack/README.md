@@ -51,3 +51,6 @@ docker stop kibana
 docker rm kibana
 ```
 http://localhost:5601/
+
+## References
+* [ELK on docker](https://www.elastic.co/guide/en/elastic-stack-get-started/master/get-started-docker.html) 
