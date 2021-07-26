@@ -24,3 +24,10 @@ docker rm test-box
 kubectl create deployment test-box -n <name-space> --image <docker-repo>:<tag>
 kubectl exec --stdin --tty test-box -n <name-space> -- /bin/bash
 ```
+
+## Publish
+```
+docker build -t jurajveverka/test-box:1.0.0 .
+docker push jurajveverka/test-box:1.0.0
+```
+
