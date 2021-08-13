@@ -4,3 +4,8 @@
 * [gitlab](gitlab)
 * [gerrit](gerrit)
 * [github](github)
+
+### git branch diff
+```
+git log --oneline origin/<branch-name-01>..origin/<branch-name-02>
+```
