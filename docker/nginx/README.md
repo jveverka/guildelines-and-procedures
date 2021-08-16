@@ -1,4 +1,4 @@
-# NGINX as Docker
+# NGINX in Docker
 
 ```
 export ARCH=amd64|arm64v8
