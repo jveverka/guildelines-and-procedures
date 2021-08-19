@@ -5,7 +5,7 @@
 sudo apt install docker.io
 sudo apt install docker-compose
 sudo systemctl enable --now docker
-sudo usermod -aG docker MYUSERNAME
+sudo usermod -aG docker ${USER}
 ```
 
 ## Install additional tools
@@ -21,7 +21,7 @@ export VERSION=1.0.0
 docker build -t ${REPOSITORY}/${IMAGE_NAME}:${VERSION}-amd64 --build-arg ARCH=amd64 --file ./Dockerfile . 
 docker push ${REPOSITORY}/${IMAGE_NAME}:${VERSION}-amd64
 
-# on ARM64 v8 device:
+# on ARM64 v8 device (RPi4 64bit OS):
 docker build -t ${REPOSITORY}/${IMAGE_NAME}:${VERSION}-arm64v8 --build-arg ARCH=arm64v8 --file ./Dockerfile . 
 docker push ${REPOSITORY}/${IMAGE_NAME}:${VERSION}-arm64v8
 
