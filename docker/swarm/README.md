@@ -19,3 +19,4 @@ docker swarm join-token worker
 ### References
 * [Swarm mode overview](https://docs.docker.com/engine/swarm/)
 * [Swarm mode routing mesh](https://docs.docker.com/engine/swarm/ingress/)
+* [Deploy to Swarm](https://docs.docker.com/get-started/swarm-deploy/)
