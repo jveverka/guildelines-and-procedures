@@ -36,4 +36,9 @@ netplan apply
 This network setup survives reboots.
 
 ## Intellij Idea Favorite
-~/.local/share/applications/jetbrains-idea.desktop
+* Copy ``jetbrains-idea.desktop`` file into location below:
+   ```
+   ~/.local/share/applications/jetbrains-idea.desktop
+   ```
+* Edit file content
+* Start intellij from CLI and create favorite link (right click).
