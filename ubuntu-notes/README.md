@@ -35,3 +35,5 @@ netplan apply
 ```
 This network setup survives reboots.
 
+## Intellij Idea Favorite
+~/.local/share/applications/jetbrains-idea.desktop
