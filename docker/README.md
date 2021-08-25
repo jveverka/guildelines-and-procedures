@@ -11,7 +11,7 @@ sudo usermod -aG docker ${USER}
 ## Install additional tools
 * [dive](https://github.com/wagoodman/dive) - explore docker images in console.
 
-## Build Dockers for x86_64 and ARM64
+## Build Docker image for x86_64 and ARM64
 ```
 export REPOSITORY=jurajveverka
 export IMAGE_NAME=docker-example
