@@ -1,0 +1,4 @@
+#!/bin/bash
+
+export PATH=/opt/kubectl-v1.20.5:/opt/helm-v3.5.4:/opt/terraform_0.15.0:$PATH
+

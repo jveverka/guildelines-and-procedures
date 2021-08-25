@@ -1,0 +1,5 @@
+#!/bin/bash
+
+export PATH=/opt/flutter_2.2.1/bin/:$PATH
+export CHROME_EXECUTABLE=/opt/environments/start-chrome.sh
+

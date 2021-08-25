@@ -1,0 +1,5 @@
+#!/bin/bash
+
+export PATH=/opt/jdk-16.0.2+7/bin:/opt/gradle-7.2/bin:/opt/apache-maven-3.8.2/bin:$PATH
+export JAVA_HOME=/opt/jdk-16.0.2+7
+
