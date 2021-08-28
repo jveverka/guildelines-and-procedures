@@ -22,3 +22,4 @@ docker node ps <node-id>
 * [Swarm mode overview](https://docs.docker.com/engine/swarm/)
 * [Swarm mode routing mesh](https://docs.docker.com/engine/swarm/ingress/)
 * [Deploy to Swarm](https://docs.docker.com/get-started/swarm-deploy/)
+* [Docker Machine](https://docs.docker.com/machine/)
