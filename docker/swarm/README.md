@@ -13,6 +13,8 @@ docker swarm join --token <TOKEN> <MANAGER-IP>:2377
 ```
 docker node ls
 docker stack deploy -c docker-compose.yml <stack-name>
+docker stack ls
+docker stack rm <stack-name> 
 docker service ls
 docker swarm join-token worker
 docker node ps <node-id>
