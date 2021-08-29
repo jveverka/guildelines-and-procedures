@@ -33,3 +33,6 @@ ${REPOSITORY}/${IMAGE_NAME}:${VERSION} \
 
 docker manifest push ${REPOSITORY}/${IMAGE_NAME}:${VERSION}
 ```
+
+### References
+* [About /var/run/docker.sock](https://betterprogramming.pub/about-var-run-docker-sock-3bfd276e12fd)
