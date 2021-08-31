@@ -3,8 +3,8 @@
 ![architecture](docs/elk-stack.svg)
 
 ```
-docker-compose up -d
-docker-compose down -v --rmi all --remove-orphans
+docker-compose -f elk-docker-compose.yml up -d
+docker-compose -f elk-docker-compose.yml down -v --rmi all --remove-orphans
 ```
 
 ### Elastic Search
