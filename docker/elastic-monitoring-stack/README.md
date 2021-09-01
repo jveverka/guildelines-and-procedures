@@ -29,18 +29,6 @@ curl http://localhost:9200/_cat/master
 curl http://localhost:9200/_cat/indices
 ```
 
-### Log Stash
-```
-docker run -d --name logstash \
-  --restart unless-stopped \
-  -p 5044:5044 \
-  -e "monitoring.elasticsearch.hosts=http://localhost:9200" \
-  -e "xpack.monitoring.enabled=false" \
-  -v "/opt/data/logstash-data/logstash.conf:/usr/share/logstash/config/logstash.conf" \
-  --network host \
-  docker.elastic.co/logstash/logstash:7.14.0
-```
-
 ### Kibana
 ```
 docker run -d --name kibana \
@@ -58,5 +46,21 @@ docker rm kibana
 http://localhost:5601/
 ```
 
+### Log Stash (optional)
+```
+docker run -d --name logstash \
+  --restart unless-stopped \
+  -p 5044:5044 \
+  -e "monitoring.elasticsearch.hosts=http://localhost:9200" \
+  -e "xpack.monitoring.enabled=false" \
+  -v "/opt/data/logstash-data/logstash.conf:/usr/share/logstash/config/logstash.conf" \
+  --network host \
+  docker.elastic.co/logstash/logstash:7.14.0
+```
+
 ## References
 * [ELK on docker](https://www.elastic.co/guide/en/elastic-stack-get-started/master/get-started-docker.html) 
+* [Filebeat](https://www.elastic.co/guide/en/beats/filebeat/current/index.html)
+  * [Docker input](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-input-docker.html)
+  * [Add Docker metadata](https://www.elastic.co/guide/en/beats/filebeat/current/add-docker-metadata.html) 
+* [Metricbeat](https://www.elastic.co/guide/en/beats/metricbeat/current/index.html)

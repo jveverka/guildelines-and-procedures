@@ -1,0 +1,20 @@
+filebeat.inputs:
+  - type: log
+    enabled: false
+    paths:
+      - '/var/lib/docker/containers/*/*.log'
+  - type: docker
+    enabled: true
+    containers:
+      path: "/var/lib/docker/containers"
+      ids: '*'
+
+processors:
+  - add_docker_metadata:
+      host: "unix:///var/run/docker.sock"
+
+output.elasticsearch:
+  hosts: ["http://192.168.122.38:9200"]
+
+#output.logstash:
+#  hosts: [192.168.122.38:5044]
