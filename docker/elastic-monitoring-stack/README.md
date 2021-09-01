@@ -60,7 +60,3 @@ docker run -d --name logstash \
 
 ## References
 * [ELK on docker](https://www.elastic.co/guide/en/elastic-stack-get-started/master/get-started-docker.html) 
-* [Filebeat](https://www.elastic.co/guide/en/beats/filebeat/current/index.html)
-  * [Docker input](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-input-docker.html)
-  * [Add Docker metadata](https://www.elastic.co/guide/en/beats/filebeat/current/add-docker-metadata.html) 
-* [Metricbeat](https://www.elastic.co/guide/en/beats/metricbeat/current/index.html)
