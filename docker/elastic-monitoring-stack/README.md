@@ -1,13 +1,14 @@
-# ELK stack
+# ElasticSearch - Kibana Stack
 
-![architecture](docs/elk-stack.svg)
+![architecture](docs/elastic-monitoring-stack.svg)
 
+## Run in docker-compose
 ```
-docker-compose -f elk-docker-compose.yml up -d
-docker-compose -f elk-docker-compose.yml down -v --rmi all --remove-orphans
+docker-compose -f ek-docker-compose.yml up -d
+docker-compose -f ek-docker-compose.yml down -v --rmi all --remove-orphans
 ```
 
-### Elastic Search
+### ElasticSearch
 
 ```
 mkdir /opt/data/elasticsearch-data
@@ -47,6 +48,7 @@ http://localhost:5601/
 ```
 
 ### Log Stash (optional)
+Logstash  is no longer required when using [Elastic Beats](https://www.elastic.co/beats/) components.
 ```
 docker run -d --name logstash \
   --restart unless-stopped \
