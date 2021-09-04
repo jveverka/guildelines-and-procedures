@@ -1,5 +1,12 @@
-# Ubuntu 18.04 setup notes
-Collection of notes for setting varios things on Ubuntu 18.04 LTS.
+# Ubuntu 20.04 setup notes
+Collection of notes for setting varios things on Ubuntu 20.04 LTS.
+
+## Desktop after fresh install
+1. Install additional packages
+   ```
+   sudo apt install indicator-multiload gnome-tweaks gnome-shell-extension-system-monitor
+   ```
+2. install [docker and docker-compose](../docker)
 
 ### Edit application launcher 
 ```cd .local/share/applications/```
