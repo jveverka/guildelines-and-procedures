@@ -1,11 +1,25 @@
 # Docker guidelines
 
-## Install Docker on Ubuntu 20.04
+## Install Docker on [Ubuntu 20.04](https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-live-server-amd64.iso)
 ```
 sudo apt install docker.io
 sudo apt install docker-compose
 sudo systemctl enable --now docker
 sudo usermod -aG docker ${USER}
+```
+
+## Install Docker on [Centos 8](http://ftp.sh.cvut.cz/centos/8.4.2105/isos/x86_64/CentOS-8.4.2105-x86_64-boot.iso)
+```
+sudo yum install -y yum-utils
+sudo yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/centos/docker-ce.repo
+sudo yum remove runc
+sudo yum install docker-ce docker-ce-cli containerd.io
+sudo systemctl start docker
+
+curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
 ```
 
 ## Install additional tools
