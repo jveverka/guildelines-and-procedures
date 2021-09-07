@@ -1,4 +1,7 @@
 FROM maven:3.8.2-amazoncorretto-11
+
+LABEL org.opencontainers.image.authors="gergej123@gmail.com"
+
 RUN yum -y install man vi vim git wget curl unzip telnet nmap iputils bind-utils postgresql
 RUN wget https://releases.hashicorp.com/terraform/0.14.5/terraform_0.14.5_linux_amd64.zip && unzip terraform_0.14.5_linux_amd64.zip && chmod 755 terraform && mv terraform /bin/ && rm -f terraform_0.14.5_linux_amd64.zip
 RUN wget https://storage.googleapis.com/kubernetes-release/release/v1.20.4/bin/linux/amd64/kubectl && chmod +x ./kubectl && mv kubectl /bin/
