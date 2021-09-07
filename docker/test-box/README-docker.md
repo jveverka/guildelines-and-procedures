@@ -4,7 +4,7 @@
 Usual hacker's swiss army knife tools like:
 * telnet, nmap, ping, dig, nslookup, nc, tracepath
 
-## Postgresql commands
+### PostgreSQL commands
 ```
 psql -h <hostname> -p <port> -U <username>
   SELECT * FROM information_schema.schemata; #show schemas
@@ -24,4 +24,10 @@ info keyspace
 keys *
 type <key-id>
 get <key-id>
+```
+
+### MongoDB Shell
+```
+cd mongosh-1.0.5-linux-x64/bin
+./mongosh 
 ```

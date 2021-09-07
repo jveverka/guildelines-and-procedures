@@ -11,11 +11,12 @@ This docker image is designed for testing and troubleshooting purposes.
 * aws cli
 * psql 
 * redis-cli
+* mongosh
 
 ## Run in docker 
 ```
-docker build -t test-box:1.1.0 .
-docker run --name test-box -d test-box:1.1.0
+docker build -t jurajveverka/test-box:1.1.0 .
+docker run --name test-box -d jurajveverka/test-box:1.1.0
 docker exec -ti test-box "/bin/bash"
 docker stop test-box
 docker rm test-box
