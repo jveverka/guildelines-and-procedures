@@ -13,3 +13,15 @@ psql -h <hostname> -p <port> -U <username>
   SELECT * FROM pg_roles;
   SELECT * FROM pg_catalog.pg_tables;
 ```
+
+### Redis commands
+```
+cd redis-6.2.5/src
+./redis-cli -c -h <redis-cluster-endpoint> --tls -a <password> -p <port>
+ping
+info 
+info keyspace
+keys *
+type <key-id>
+get <key-id>
+```
