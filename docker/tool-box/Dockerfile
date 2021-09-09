@@ -14,6 +14,10 @@ RUN wget http://download.redis.io/releases/redis-6.2.5.tar.gz && tar xzvf redis-
 # install mongosh
 RUN wget https://downloads.mongodb.com/compass/mongosh-1.0.5-linux-x64.tgz && tar xzvf mongosh-1.0.5-linux-x64.tgz
 
+# install stress
+RUN amazon-linux-extras install epel -y
+RUN yum install stress -y
+
 COPY README-docker.md /README.md
 COPY loop.sh /loop.sh
 ENTRYPOINT ["/loop.sh"]

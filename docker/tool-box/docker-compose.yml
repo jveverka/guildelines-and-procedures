@@ -2,5 +2,5 @@ version: '3.3'
 
 services:
   tool-box:
-    image: jurajveverka/tool-box:1.1.0
+    image: jurajveverka/tool-box:1.2.0
     container_name: tool-box

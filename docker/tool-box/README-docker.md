@@ -2,7 +2,7 @@
 
 ## Network testing
 Usual hacker's swiss army knife tools like:
-* telnet, nmap, ping, dig, nslookup, nc, tracepath
+* telnet, nmap, ping, dig, nslookup, nc, tracepath, stress
 
 ### PostgreSQL commands
 ```
