@@ -22,9 +22,14 @@
    sudo systemctl restart docker
    ```
 5. [Install kubeadm](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)   
-6. Setup cluster network (flannel).
    ```
-   kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml; 
+   sudo apt-get update
+   sudo apt-get install -y apt-transport-https ca-certificates curl
+   sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+   echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+   sudo apt-get update
+   sudo apt-get install -y kubelet kubeadm kubectl
+   sudo apt-mark hold kubelet kubeadm kubectl
    ```
 
 ## On Kubernetes Master
@@ -38,10 +43,14 @@
    sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
    sudo chown $(id -u):$(id -g) $HOME/.kube/config
    ```
+3. Setup cluster network (flannel).
+   ```
+   kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml; 
+   ```
 
 ## On all Kubernetes workers
 ```
-kubeadm join <k8s-master-ip>:6443 --token <token> \
+sudo kubeadm join <k8s-master-ip>:6443 --token <token> \
 	--discovery-token-ca-cert-hash sha256:<token-hash>
 ```
 
