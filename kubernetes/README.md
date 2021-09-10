@@ -1,6 +1,6 @@
 # Install Kubernetes on [Ubuntu 20.04](https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-live-server-amd64.iso)
 ## On All nodes
-1. [Install Docker](../README.md)
+1. [Install Docker](docker/README.md)
 2. Disable swap
 3. Configure the Docker daemon, in particular to use systemd for the management of the container’s cgroups.
    [details](https://kubernetes.io/docs/setup/production-environment/container-runtimes/#docker) 
