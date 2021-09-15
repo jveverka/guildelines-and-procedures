@@ -1,4 +1,0 @@
-include "backup-ng-common"
-include "backup-ng-cli"
-include "backup-ng-server"
-

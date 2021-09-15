@@ -1,8 +1,0 @@
-### stdOut:
-line 01
-line 02
-### stdErr:
-err 01
-err 02
-### exitCode:
-4

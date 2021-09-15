@@ -1,8 +1,0 @@
-### stdOut:
-system-name=Raspbian GNU/Linux 8 (jessie)
-system-kernel-version=Linux 4.4.26-v7+ armv7l
-system-hostname=rpi001
-system-uptime=521.39
-### stdErr:
-### exitCode:
-0
