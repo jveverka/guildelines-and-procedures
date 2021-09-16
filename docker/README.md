@@ -48,7 +48,7 @@ ${REPOSITORY}/${IMAGE_NAME}:${VERSION} \
 docker manifest push ${REPOSITORY}/${IMAGE_NAME}:${VERSION}
 ```
 
-### Running on SE Linux
+### Docker on SE Linux Host
 1. Install and enable selinux on docker host.
    ```
    sudo apt install policycoreutils selinux-utils selinux-basics
