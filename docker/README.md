@@ -2,8 +2,8 @@
 See also [kubernetes guidelines](../kubernetes)
 ## Install Docker on [Ubuntu 20.04](https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-live-server-amd64.iso)
 ```
-sudo apt install docker.io
-sudo apt install docker-compose
+sudo apt install -y docker.io
+sudo apt install -y docker-compose
 sudo systemctl enable --now docker
 sudo usermod -aG docker ${USER}
 ```
