@@ -48,6 +48,13 @@ ${REPOSITORY}/${IMAGE_NAME}:${VERSION} \
 docker manifest push ${REPOSITORY}/${IMAGE_NAME}:${VERSION}
 ```
 
+## Uninstall Docker [Ubuntu 20.04](https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-live-server-amd64.iso)
+```
+sudo apt purge -y docker.io
+sudo apt purge -y docker-compose
+sudo apt autoremove
+```
+
 ### References
 * [About /var/run/docker.sock](https://betterprogramming.pub/about-var-run-docker-sock-3bfd276e12fd)
 * /var/lib/docker/*
