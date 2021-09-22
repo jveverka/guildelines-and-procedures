@@ -16,7 +16,10 @@ RUN wget https://downloads.mongodb.com/compass/mongosh-1.0.5-linux-x64.tgz && ta
 
 # install stress
 RUN amazon-linux-extras install epel -y
-RUN yum install stress -y
+RUN yum -y install stress
+
+# install python3
+RUN yum -y install python3
 
 COPY README-docker.md /README.md
 COPY loop.sh /loop.sh

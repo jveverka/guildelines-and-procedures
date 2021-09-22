@@ -3,6 +3,7 @@
 ## Network testing
 Usual hacker's swiss army knife tools like:
 * telnet, nmap, ping, dig, nslookup, nc, tracepath, stress
+* python3
 
 ### PostgreSQL commands
 ```
