@@ -6,6 +6,7 @@ sudo apt install -y docker.io
 sudo apt install -y docker-compose
 sudo systemctl enable --now docker
 sudo usermod -aG docker ${USER}
+sudo systemctl start docker
 ```
 
 ## Install Docker on [Centos 8](http://ftp.sh.cvut.cz/centos/8.4.2105/isos/x86_64/CentOS-8.4.2105-x86_64-boot.iso)
@@ -14,8 +15,9 @@ sudo yum install -y yum-utils
 sudo yum-config-manager \
     --add-repo \
     https://download.docker.com/linux/centos/docker-ce.repo
-sudo yum remove runc
-sudo yum install docker-ce docker-ce-cli containerd.io
+sudo yum remove -y runc
+sudo yum install -y docker-ce docker-ce-cli containerd.io
+sudo systemctl enable --now docker
 sudo systemctl start docker
 
 curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
