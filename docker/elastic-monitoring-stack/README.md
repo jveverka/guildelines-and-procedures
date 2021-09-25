@@ -8,7 +8,19 @@ docker-compose -f ek-docker-compose.yml up -d
 docker-compose -f ek-docker-compose.yml down -v --rmi all --remove-orphans
 ```
 
-### ElasticSearch
+## Run in Docker Swarm mode
+```
+docker stack deploy -c ek-docker-swarm.yml ek-stack
+docker stack rm ek-stack
+
+docker stack ps ek-stack
+docker stack services ek-stack
+docker volume inspect ek-stack_elastic_data 
+```
+
+## Run in plain Docker
+
+#### ElasticSearch
 
 ```
 mkdir /opt/data/elasticsearch-data
@@ -30,7 +42,7 @@ curl http://localhost:9200/_cat/master
 curl http://localhost:9200/_cat/indices
 ```
 
-### Kibana
+#### Kibana
 ```
 docker run -d --name kibana \
   --restart unless-stopped \
@@ -47,7 +59,7 @@ docker rm kibana
 http://localhost:5601/
 ```
 
-### Log Stash (optional)
+#### Log Stash (optional)
 Logstash  is no longer required when using [Elastic Beats](https://www.elastic.co/beats/) components.
 ```
 docker run -d --name logstash \
