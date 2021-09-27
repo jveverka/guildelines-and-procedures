@@ -12,11 +12,19 @@ docker stack deploy -c gl-docker-swarm.yml gl-stack
 docker stack services gl-stack
 docker service ps --no-trunc <service-name>
 ````
-3. Remove gitlab stack
+3. Use gitlab stack
+``http://<server-ip>`` root : topsecret
+ 
+5. Remove gitlab stack
 ```
 docker stack rm gl-stack
+rm -rf $GITLAB_HOME/data/*
+rm -rf $GITLAB_HOME/data/.*
+rm -rf $GITLAB_HOME/logs/*
+rm -rf $GITLAB_HOME/config/*
 ``` 
 
 ### References
+* [GitLab Docker Examples](https://github.com/docker-envs/gitlab)
 * [GitLab Docker](https://docs.gitlab.com/ee/install/docker.html)
 * [Gitlab Swarm](https://docs.gitlab.com/ee/install/docker.html#install-gitlab-using-docker-swarm-mode)

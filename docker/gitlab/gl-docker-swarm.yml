@@ -16,8 +16,7 @@ services:
     configs:
       - source: gitlab
         target: /omnibus_config.rb
-    secrets:
-      - gitlab_root_password
+
   gitlab-runner:
     image: gitlab/gitlab-runner:v14.3.0
     deploy:
@@ -27,7 +26,3 @@ services:
 configs:
   gitlab:
     file: ./gitlab.rb
-
-secrets:
-  gitlab_root_password:
-    file: ./root_password.txt
