@@ -58,6 +58,7 @@ sudo apt autoremove
 ```
 
 ### References
+* [Docker Gotchas](https://uilicious.com/blog/5-fatal-docker-gotchas-for-new-users/)
 * [About /var/run/docker.sock](https://betterprogramming.pub/about-var-run-docker-sock-3bfd276e12fd)
 * /var/lib/docker/*
 * /var/lib/docker/containers/*

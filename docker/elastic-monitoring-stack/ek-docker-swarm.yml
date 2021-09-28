@@ -4,7 +4,7 @@ services:
 
   elastic:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.15.0
-    ports:
+    ports: ## replace with expose to avoid firewall bypass
       - 9200:9200
       - 9300:9300
     environment:
@@ -20,7 +20,7 @@ services:
 
   kibana:
     image: docker.elastic.co/kibana/kibana:7.15.0
-    ports:
+    ports: ## replace with expose to avoid firewall bypass
       - 5601:5601
     environment:
       - ELASTICSEARCH_HOSTS=http://elastic:9200
