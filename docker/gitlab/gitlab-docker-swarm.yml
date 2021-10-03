@@ -2,7 +2,7 @@ version: "3.6"
 
 services:
   gitlab:
-    image: gitlab/gitlab-ce:14.3.0-ce.0
+    image: gitlab/gitlab-ce:14.3.2-ce.0
     ports:
       - "22:22"
       - "80:80"
@@ -11,6 +11,8 @@ services:
       - $GITLAB_HOME/data:/var/opt/gitlab
       - $GITLAB_HOME/logs:/var/log/gitlab
       - $GITLAB_HOME/config:/etc/gitlab
+      - $GITLAB_HOME/certs/apache-global.crt:/etc/gitlab/ssl/gitlab-server.crt
+      - $GITLAB_HOME/certs/apache-global.key:/etc/gitlab/ssl/gitlab-server.key
     environment:
       GITLAB_OMNIBUS_CONFIG: "from_file('/omnibus_config.rb')"
     configs:
@@ -18,7 +20,7 @@ services:
         target: /omnibus_config.rb
 
   gitlab-runner:
-    image: gitlab/gitlab-runner:v14.3.0
+    image: gitlab/gitlab-runner:v14.3.2
     deploy:
       mode: replicated
       replicas: 4

@@ -8,8 +8,8 @@ mkdir -p $GITLAB_HOME/config
 ```
 2. Start gitlab stack
 ````
-docker stack deploy -c gl-docker-swarm.yml gl-stack 
-docker stack services gl-stack
+docker stack deploy -c gitlab-docker-swarm.yml gitlab 
+docker stack services gitlab
 docker service ps --no-trunc <service-name>
 ````
 3. Use gitlab stack
@@ -17,7 +17,7 @@ docker service ps --no-trunc <service-name>
  
 5. Remove gitlab stack
 ```
-docker stack rm gl-stack
+docker stack rm gitlab
 rm -rf $GITLAB_HOME/data/*
 rm -rf $GITLAB_HOME/data/.*
 rm -rf $GITLAB_HOME/logs/*
