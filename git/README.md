@@ -10,6 +10,17 @@
 git log --oneline origin/<branch-name-01>..origin/<branch-name-02>
 ```
 
+### Transfer git repository
+Transfer git repository with all branches, tags and commit history.
+```
+git -c http.sslVerify=false clone --bare <source-git-repository-**>
+cd <source-git-repository.git>
+git -c http.sslVerify=false push --mirror <target-git-repository-**>
+```
+** repository URL may be in formats
+* git@server:group/repo-name.git 
+* https://user:pass@server:group/repo-name.git
+
 ### Many ssh keys for different git servers
 1. Generate ssh keypair 1  
    ```
