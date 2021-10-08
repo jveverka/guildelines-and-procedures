@@ -11,8 +11,8 @@ services:
       - $GITLAB_HOME/data:/var/opt/gitlab
       - $GITLAB_HOME/logs:/var/log/gitlab
       - $GITLAB_HOME/config:/etc/gitlab
-      - $GITLAB_HOME/certs/apache-global.crt:/etc/gitlab/ssl/gitlab-server.crt
-      - $GITLAB_HOME/certs/apache-global.key:/etc/gitlab/ssl/gitlab-server.key
+      #- $GITLAB_HOME/certs/apache-global.crt:/etc/gitlab/ssl/gitlab-server.crt
+      #- $GITLAB_HOME/certs/apache-global.key:/etc/gitlab/ssl/gitlab-server.key
     environment:
       GITLAB_OMNIBUS_CONFIG: "from_file('/omnibus_config.rb')"
     configs:

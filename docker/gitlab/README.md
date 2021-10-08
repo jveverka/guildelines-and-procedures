@@ -10,7 +10,8 @@ mkdir -p $GITLAB_HOME/config
 ````
 docker stack deploy -c gitlab-docker-swarm.yml gitlab 
 docker stack services gitlab
-docker service ps --no-trunc <service-name>
+docker service ps --no-trunc gitlab_gitlab
+docker service ps --no-trunc gitlab_gitlab-runner
 ````
 3. Use gitlab stack
 ``http://<server-ip>`` root : topsecret
