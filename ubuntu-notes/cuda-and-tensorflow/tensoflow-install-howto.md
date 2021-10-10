@@ -11,7 +11,7 @@ Install on system (no virtual env)
 ```
 pip3 install --user --upgrade tensorflow
 ```
-Fot GPU accelerated environments:
+For GPU accelerated environments:
 ```
 pip3 install --user --upgrade tensorflow-gpu
 ```
