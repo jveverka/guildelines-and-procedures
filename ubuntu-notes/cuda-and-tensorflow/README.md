@@ -44,6 +44,11 @@ sudo apt install ./libcudnn8-dev_8.2.4.15-1+cuda11.4_amd64.deb
 ``` 
 
 ## Test Installation
+1. Test Tensorflow installation
+```python
+python3 -c 'import tensorflow as tf; print(tf.__version__)'
+```
+2. Test Tensorflow + CUDA + cuDNN installation
 ```python
 import tensorflow as tf
 if tf.test.gpu_device_name():
