@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# this sript sets up NAT between external interface (WAN) internal interface (LAN) 
+# this script sets up NAT between external interface (WAN) internal interface (LAN)
 # run as root on ubuntu 18.04 LTS
 # set IPv4 packet forwarding by editing '/etc/sysctl.conf' and '/etc/ufw/sysctl.conf'
 # https://www.ascinc.com/blog/linux/how-to-build-a-simple-router-with-ubuntu-server-18-04-1-lts-bionic-beaver/

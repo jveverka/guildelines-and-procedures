@@ -1,5 +1,5 @@
 # Ubuntu 20.04 setup notes
-Collection of notes for setting varios things on Ubuntu 20.04 LTS.
+Collection of notes, setting and various guidelines for Ubuntu 20.04 LTS.
 
 ## Desktop after fresh install
 1. Install additional packages
