@@ -11,6 +11,7 @@ sudo systemctl start docker
 
 ## Install Docker on [Centos 8](http://ftp.sh.cvut.cz/centos/8.4.2105/isos/x86_64/CentOS-8.4.2105-x86_64-boot.iso)
 ```
+sudo yum update -y
 sudo yum install -y yum-utils
 sudo yum-config-manager \
     --add-repo \
@@ -23,6 +24,18 @@ sudo systemctl start docker
 curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
 ```
+
+## Install Docker on [Rocky Linux 8](https://rockylinux.org/download)
+  ```
+  sudo yum update -y
+  sudo yum install -y yum-utils
+  sudo yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/centos/docker-ce.repo
+  sudo yum install -y docker-ce docker-ce-cli containerd.io
+  sudo systemctl enable docker
+  sudo systemctl start docker
+  ```
 
 ## Install additional tools
 * [dive](https://github.com/wagoodman/dive) - explore docker images in console.
