@@ -2,15 +2,15 @@ version: "3.6"
 
 services:
   gitlab:
-    image: gitlab/gitlab-ce:14.3.2-ce.0
+    image: gitlab/gitlab-ce:14.3.3-ce.0
     ports:
-      - "22:22"
-      - "80:80"
-      - "443:443"
+      - 22:22
+      - 80:80
+      - 443:443
     volumes:
-      - $GITLAB_HOME/data:/var/opt/gitlab
-      - $GITLAB_HOME/logs:/var/log/gitlab
-      - $GITLAB_HOME/config:/etc/gitlab
+      - gitlab_data:/var/opt/gitlab
+      - gitlab_logs:/logs/var/log/gitlab
+      - gitlab_config:/config/etc/gitlab
       #- $GITLAB_HOME/certs/apache-global.crt:/etc/gitlab/ssl/gitlab-server.crt
       #- $GITLAB_HOME/certs/apache-global.key:/etc/gitlab/ssl/gitlab-server.key
     environment:
@@ -20,7 +20,10 @@ services:
         target: /omnibus_config.rb
 
   gitlab-runner:
-    image: gitlab/gitlab-runner:v14.3.2
+    image: gitlab/gitlab-runner:v14.3.3
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - gitlab_runner_config:/etc/gitlab-runner
     deploy:
       mode: replicated
       replicas: 4
@@ -28,3 +31,9 @@ services:
 configs:
   gitlab:
     file: ./gitlab.rb
+
+volumes:
+  gitlab_data:
+  gitlab_logs:
+  gitlab_config:
+  gitlab_runner_config:
