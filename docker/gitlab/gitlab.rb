@@ -1,4 +1,4 @@
-external_url "http://192.168.122.130"
+external_url "http://192.168.122.81"
 gitlab_rails['initial_root_password'] = "topsecret"
 #letsencrypt['enable'] = false
 #nginx['redirect_http_to_https'] = true
