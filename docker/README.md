@@ -70,8 +70,19 @@ sudo apt purge -y docker-compose
 sudo apt autoremove
 ```
 
+## Remote access
+```
+useradd dockeradmin
+usermod -aG docker dockeradmin
+
+docker context create my-remote-docker-machine --docker "host=ssh://dockeradmin@host:port"
+docker context ls
+docker context use my-remote-docker-machine
+```
+
 ### References
 * [Docker Gotchas](https://uilicious.com/blog/5-fatal-docker-gotchas-for-new-users/)
 * [About /var/run/docker.sock](https://betterprogramming.pub/about-var-run-docker-sock-3bfd276e12fd)
+* [Docker Context](https://docs.docker.com/engine/context/working-with-contexts/)
 * /var/lib/docker/*
 * /var/lib/docker/containers/*
