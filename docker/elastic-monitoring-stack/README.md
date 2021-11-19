@@ -31,7 +31,7 @@ docker run -d --name elasticsearch \
   -e "discovery.type=single-node" \
   -v "/opt/data/elasticsearch-data:/usr/share/elasticsearch/data" \
   --network host \
-  elasticsearch:7.15.1
+  elasticsearch:7.15.2
 docker logs -f elasticsearch
 docker stop elasticsearch
 docker rm elasticsearch
@@ -49,7 +49,7 @@ docker run -d --name kibana \
   -p 5601:5601 \
   -e "ELASTICSEARCH_HOSTS=http://localhost:9200" \
   --network host \
-  docker.elastic.co/kibana/kibana:7.15.1
+  docker.elastic.co/kibana/kibana:7.15.2
 docker logs -f kibana
 docker exec -it kibana /bin/bash
 docker stop kibana
@@ -69,7 +69,7 @@ docker run -d --name logstash \
   -e "xpack.monitoring.enabled=false" \
   -v "/opt/data/logstash-data/logstash.conf:/usr/share/logstash/config/logstash.conf" \
   --network host \
-  docker.elastic.co/logstash/logstash:7.15.1
+  docker.elastic.co/logstash/logstash:7.15.2
 ```
 
 ## References

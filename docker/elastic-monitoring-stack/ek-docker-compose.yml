@@ -3,7 +3,7 @@ version: '3.6'
 services:
 
   elastic:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.15.1
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.15.2
     ports:
       - 9200:9200
       - 9300:9300
@@ -18,7 +18,7 @@ services:
       - elastic_data:/usr/share/elasticsearch/data
 
   kibana:
-    image: docker.elastic.co/kibana/kibana:7.15.1
+    image: docker.elastic.co/kibana/kibana:7.15.2
     ports:
       - 5601:5601
     environment:
@@ -30,7 +30,7 @@ volumes:
   elastic_data:
 
 #  logstash:
-#    image: docker.elastic.co/logstash/logstash:7.15.1
+#    image: docker.elastic.co/logstash/logstash:7.15.2
 #    ports:
 #      - 5044:5044
 #    environment:
