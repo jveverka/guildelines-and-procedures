@@ -4,6 +4,7 @@
 * [configuration](https://prometheus.io/docs/prometheus/latest/configuration/configuration/)  
 * [monitoring springboot](https://stackabuse.com/monitoring-spring-boot-apps-with-micrometer-prometheus-and-grafana/)
 
+## Run in Docker
 ```
 BASE_PATH=`pwd`
 docker run \
@@ -19,4 +20,10 @@ docker run \
     -d --name grafana \
     --network host  \
     -p 3000:3000 grafana/grafana
+```
+
+## Run in docker-compose
+```
+docker-compose -f prometheus-grafana-compose.yml up -d
+docker-compose -f prometheus-grafana-compose.yml down
 ```
