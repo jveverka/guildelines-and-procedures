@@ -75,3 +75,4 @@ docker run -d --name logstash \
 ## References
 * [ELK on docker](https://www.elastic.co/guide/en/elastic-stack-get-started/master/get-started-docker.html) 
 * [OpenSearch](https://opensearch.org/)
+* [Run Filebeat on Kubernetes](https://www.elastic.co/guide/en/beats/filebeat/current/running-on-kubernetes.html)

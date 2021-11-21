@@ -9,7 +9,10 @@ services:
       - 9300:9300
     environment:
       - discovery.type=single-node
+      - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms12g -Xmx12g"
+      - ELASTIC_PASSWORD=supersecret
+      - xpack.security.enabled=true
     ulimits:
       memlock:
         soft: -1
@@ -26,6 +29,8 @@ services:
     environment:
       - ELASTICSEARCH_HOSTS=http://elastic:9200
       - SERVER_BASEPATH=/kibana
+      - ELASTICSEARCH_USERNAME=elastic
+      - ELASTICSEARCH_PASSWORD=supersecret
     depends_on:
       - "elastic"
     deploy:
