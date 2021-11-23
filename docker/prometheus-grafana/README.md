@@ -27,3 +27,6 @@ docker run \
 docker-compose -f prometheus-grafana-compose.yml up -d
 docker-compose -f prometheus-grafana-compose.yml down
 ```
+
+#### References
+* [Docker Compose Stack](https://github.com/vegasbrianc/prometheus/blob/master/docker-compose.yml)
