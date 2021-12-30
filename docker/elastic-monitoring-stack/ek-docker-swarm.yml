@@ -3,14 +3,14 @@ version: '3.6'
 services:
 
   elastic:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.16.1
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.16.2
     ports: ## replace with expose to avoid firewall bypass
       - 9200:9200
       - 9300:9300
     environment:
       - discovery.type=single-node
       - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms12g -Xmx12g"
+      - "ES_JAVA_OPTS=-Xms8g -Xmx8g"
       - ELASTIC_PASSWORD=supersecret
       - xpack.security.enabled=true
     ulimits:
@@ -23,7 +23,7 @@ services:
       replicas: 1
 
   kibana:
-    image: docker.elastic.co/kibana/kibana:7.16.1
+    image: docker.elastic.co/kibana/kibana:7.16.2
     ports: ## replace with expose to avoid firewall bypass
       - 5601:5601
     environment:
