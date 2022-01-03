@@ -21,6 +21,9 @@ services:
       - elastic_data:/usr/share/elasticsearch/data
     deploy:
       replicas: 1
+      placement:
+        constraints:
+          - node.labels.monitoring==true
 
   kibana:
     image: docker.elastic.co/kibana/kibana:7.16.2
@@ -35,6 +38,9 @@ services:
       - "elastic"
     deploy:
       replicas: 1
+      placement:
+        constraints:
+          - node.labels.monitoring==true
 
   nginx-proxy:
     image: nginx:1.21-alpine
@@ -47,6 +53,9 @@ services:
       - "kibana"
     deploy:
       replicas: 1
+      placement:
+        constraints:
+          - node.labels.monitoring==true
 
 volumes:
   elastic_data:
