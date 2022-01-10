@@ -1,4 +1,5 @@
 # Install HP Printer / Scanner 
+Setup network printer / scanner on Ubuntu.
 
 ### Install
 ```
@@ -16,3 +17,6 @@ hp-setup
 ```
 hp-toolbox
 ```
+
+##### References
+* [HP printer and scanner on Ubuntu](https://www.cyberciti.biz/faq/how-to-install-networked-hp-printer-and-scanner-on-ubuntu-linux/)
