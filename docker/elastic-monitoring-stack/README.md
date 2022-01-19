@@ -31,7 +31,7 @@ docker run -d --name elasticsearch \
   -e "discovery.type=single-node" \
   -v "/opt/data/elasticsearch-data:/usr/share/elasticsearch/data" \
   --network host \
-  elasticsearch:7.16.2
+  elasticsearch:7.16.3
 docker logs -f elasticsearch
 docker stop elasticsearch
 docker rm elasticsearch
