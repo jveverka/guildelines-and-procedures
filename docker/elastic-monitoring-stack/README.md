@@ -49,7 +49,7 @@ docker run -d --name kibana \
   -p 5601:5601 \
   -e "ELASTICSEARCH_HOSTS=http://localhost:9200" \
   --network host \
-  docker.elastic.co/kibana/kibana:7.16.2
+  docker.elastic.co/kibana/kibana:7.16.3
 docker logs -f kibana
 docker exec -it kibana /bin/bash
 docker stop kibana
@@ -69,7 +69,7 @@ docker run -d --name logstash \
   -e "xpack.monitoring.enabled=false" \
   -v "/opt/data/logstash-data/logstash.conf:/usr/share/logstash/config/logstash.conf" \
   --network host \
-  docker.elastic.co/logstash/logstash:7.16.2
+  docker.elastic.co/logstash/logstash:7.16.3
 ```
 
 ## References
