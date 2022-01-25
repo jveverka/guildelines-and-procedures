@@ -1,6 +1,22 @@
-version: '3.3'
+version: '3.6'
 
 services:
   tool-box:
-    image: jurajveverka/tool-box:1.3.0
+    image: jurajveverka/tool-box:1.4.0
     container_name: tool-box
+    networks:
+      - application
+      - monitoring
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.labels.node.group==monitoring
+
+networks:
+  monitoring:
+    external: true
+    name: monitoring
+  application:
+    external: true
+    name: application

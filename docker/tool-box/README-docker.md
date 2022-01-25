@@ -2,7 +2,7 @@
 
 ## Network testing
 Usual hacker's swiss army knife tools like:
-* telnet, nmap, ping, dig, nslookup, nc, tracepath, stress
+* telnet, nmap, ping, dig, nslookup, nc, tracepath, stress, ifconfig
 * python3
 
 ### PostgreSQL commands
@@ -31,4 +31,10 @@ get <key-id>
 ```
 cd mongosh-1.0.5-linux-x64/bin
 ./mongosh 
+```
+
+### Start Web Server
+```
+/usr/sbin/nginx -g "daemon off;error_log /dev/stdout debug;"
+curl http://localhost:8080
 ```
