@@ -1,0 +1,81 @@
+version: '3.6'
+
+services:
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.0.1
+    hostname: zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - target: 2181
+        published: 2181
+        protocol: tcp
+        mode: host
+    networks:
+      - application
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.labels.node.group==monitoring
+
+  kafka:
+    image: confluentinc/cp-kafka:7.0.1
+    hostname: kafka
+    depends_on:
+      - zookeeper
+    ports:
+      - target: 9092
+        published: 9092
+        protocol: tcp
+        mode: host
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS:
+        INTERNAL://kafka:29092,
+        EXTERNAL://loclahost:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP:
+        INTERNAL:PLAINTEXT,
+        EXTERNAL:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    command: sh -c "((kafka-topics --create --zookeeper zookeeper:2181  --if-not-exists --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic data-topic)&) &&
+      ((kafka-topics --create --zookeeper zookeeper:2181  --if-not-exists --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic messages-topic)&) &&
+      ((kafka-topics --create --zookeeper zookeeper:2181  --if-not-exists --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic error-topic)&) &&
+      /etc/confluent/docker/run "
+    networks:
+      - application
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.labels.node.group==monitoring
+
+  kafdrop:
+    image: obsidiandynamics/kafdrop:3.28.0
+    hostname: kafdrop
+    networks:
+      - application
+    depends_on:
+      - kafka
+    ports:
+      - target: 9000
+        published: 9000
+        protocol: tcp
+        mode: host
+    environment:
+      KAFKA_BROKERCONNECT: kafka:29092
+      JVM_OPTS: "-Xms16M -Xmx48M -Xss180K -XX:-TieredCompilation -XX:+UseStringDeduplication -noverify"
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.labels.node.group==monitoring
+
+networks:
+  application:
+    external: true
+    name: application
