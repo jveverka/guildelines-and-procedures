@@ -1,0 +1,60 @@
+version: '3.6'
+
+services:
+  sonar:
+    image: sonarqube:lts-community
+    ports:
+      - target: 9000
+        published: 9000
+        protocol: tcp
+        mode: host
+    networks:
+      - sonarnet
+    environment:
+      - SONAR_JDBC_URL=jdbc:postgresql://sonardb:5432/sonar
+      - SONAR_JDBC_USERNAME=sonar
+      - SONAR_JDBC_PASSWORD=sonar
+    volumes:
+      - sonar_data:/opt/sonarqube/data
+      - sonar_extensions:/opt/sonarqube/extensions
+      - sonar_logs:/opt/sonarqube/logs
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 2048M
+        reservations:
+          cpus: '0.50'
+          memory: 2048M
+      placement:
+        constraints:
+          - node.role == manager
+
+  sonardb:
+    image: postgres
+    ports:
+      - "5442:5432"
+    networks:
+      - sonarnet
+    environment:
+      - POSTGRES_USER=sonar
+      - POSTGRES_PASSWORD=sonar
+    volumes:
+      - postgresql:/var/lib/postgresql
+      - postgresql_data:/var/lib/postgresql/data
+
+networks:
+  sonarnet:
+    external: false
+
+volumes:
+  sonar_data:
+    external: false
+  sonar_extensions:
+    external: false
+  sonar_logs:
+    external: false
+  postgresql:  
+    external: false
+  postgresql_data:
+    external: false  
