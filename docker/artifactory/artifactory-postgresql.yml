@@ -1,0 +1,54 @@
+version: '3.6'
+
+services:
+  postgresql:
+    image: docker.bintray.io/postgres:9.6.11
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=artifactory
+      # The following must match the DB_USER and DB_PASSWORD values passed to Artifactory
+      - POSTGRES_USER=artifactory
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - /mnt/data/artifactory/postgresql:/var/lib/postgresql/data
+    restart: always
+    ulimits:
+      nproc: 65535
+      nofile:
+        soft: 32000
+        hard: 40000
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.labels.monitoring==true
+
+  artifactory:
+    image: docker.bintray.io/jfrog/artifactory-oss:6.23.13
+    ports:
+      - 8081:8081
+    depends_on:
+      - postgresql
+    links:
+      - postgresql
+    volumes:
+      - /mnt/data/artifactory/artifactory:/var/opt/jfrog/artifactory
+    environment:
+      - DB_TYPE=postgresql
+      # The following must match the POSTGRES_USER and POSTGRES_PASSWORD values passed to PostgreSQL
+      - DB_USER=artifactory
+      - DB_PASSWORD=password
+      # Add extra Java options by uncommenting the following line
+      - EXTRA_JAVA_OPTIONS=-Xms4g -Xmx8g
+    restart: always
+    ulimits:
+      nproc: 65535
+      nofile:
+        soft: 32000
+        hard: 40000
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.labels.monitoring==true
