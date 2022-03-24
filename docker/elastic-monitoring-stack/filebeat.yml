@@ -1,13 +1,45 @@
 #logging.level: debug
 
-filebeat.inputs:
-  - type: docker
-    containers.ids:
-      - '*'
-    json.keys_under_root: true
-    json.overwrite_keys: true
-    json.add_error_key: true
-    json.expand_keys: true
+filebeat.autodiscover:
+  providers:
+    - type: docker
+      templates:
+        - condition.contains:
+            docker.container.image: kafka
+          config:
+            - type: container
+              paths:
+                - "/var/lib/docker/containers/${data.docker.container.id}/*.log"
+    - type: docker
+      templates:
+        - condition.contains:
+            docker.container.image: zookeeper
+          config:
+            - type: container
+              paths:
+                - "/var/lib/docker/containers/${data.docker.container.id}/*.log"
+    - type: docker
+      templates:
+        - condition:
+            equals:
+              docker.container.labels.servicegroup: "nextgen"
+          config:
+            - type: container
+              paths:
+                - "/var/lib/docker/containers/${data.docker.container.id}/*.log"
+              json.keys_under_root: true
+              json.overwrite_keys: true
+              json.add_error_key: true
+              json.expand_keys: true
+    - type: docker
+      templates:
+        - condition:
+            equals:
+              docker.container.labels.servicegroup: "legacy"
+          config:
+            - type: container
+              paths:
+                - "/var/lib/docker/containers/${data.docker.container.id}/*.log"
 
 processors:
   - add_docker_metadata:
