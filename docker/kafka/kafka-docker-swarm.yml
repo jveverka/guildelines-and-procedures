@@ -13,13 +13,13 @@ services:
         published: 2181
         protocol: tcp
         mode: host
-    networks:
-      - application
+#    networks:
+#      - application
     deploy:
       replicas: 1
-      placement:
-        constraints:
-          - node.labels.node.group==monitoring
+#      placement:
+#        constraints:
+#          - node.labels.node.group==monitoring
 
   kafka:
     image: confluentinc/cp-kafka:7.0.1
@@ -46,19 +46,19 @@ services:
       ((kafka-topics --create --zookeeper zookeeper:2181  --if-not-exists --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic messages-topic)&) &&
       ((kafka-topics --create --zookeeper zookeeper:2181  --if-not-exists --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic error-topic)&) &&
       /etc/confluent/docker/run "
-    networks:
-      - application
+#    networks:
+#      - application
     deploy:
       replicas: 1
-      placement:
-        constraints:
-          - node.labels.node.group==monitoring
+#      placement:
+#        constraints:
+#          - node.labels.node.group==monitoring
 
   kafdrop:
     image: obsidiandynamics/kafdrop:3.28.0
     hostname: kafdrop
-    networks:
-      - application
+#    networks:
+#      - application
     depends_on:
       - kafka
     ports:
@@ -71,11 +71,11 @@ services:
       JVM_OPTS: "-Xms16M -Xmx48M -Xss180K -XX:-TieredCompilation -XX:+UseStringDeduplication -noverify"
     deploy:
       replicas: 1
-      placement:
-        constraints:
-          - node.labels.node.group==monitoring
+#      placement:
+#        constraints:
+#          - node.labels.node.group==monitoring
 
-networks:
-  application:
-    external: true
-    name: application
+#networks:
+#  application:
+#    external: true
+#    name: application
