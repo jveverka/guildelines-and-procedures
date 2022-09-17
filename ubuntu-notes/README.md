@@ -1,10 +1,10 @@
-# Ubuntu 20.04 setup notes
+# Ubuntu 22.04 setup notes
 Collection of notes, setting and various guidelines for Ubuntu 20.04 LTS.
 
 ## Desktop after fresh install
 1. Install additional packages
    ```
-   sudo apt install indicator-multiload gnome-tweaks gnome-shell-extension-system-monitor
+   sudo apt install gnome-tweaks 
    ```
 2. install [docker and docker-compose](../docker)
 
@@ -49,3 +49,9 @@ This network setup survives reboots.
    ```
 * Edit file content
 * Start intellij from CLI and create favorite link (right click).
+
+## nvme command line
+```shell
+sudo apt install nvme-cli
+sudo nvme smart-log /dev/nvme0
+```
