@@ -21,7 +21,7 @@ sudo sshfs -o allow_other,defer_permissions root@192.168.0.249:/opt/ /mnt/remote
 
 ### Network interface setup
 As root create file 
-```/etc/netplan/01-netcfg.yaml```
+```/etc/netplan/01-network-manager-all.yaml```
 with content like this:
 ```
 network:
