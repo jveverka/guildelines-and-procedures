@@ -54,4 +54,5 @@ This network setup survives reboots.
 ```shell
 sudo apt install nvme-cli
 sudo nvme smart-log /dev/nvme0
+sudo nvme list
 ```
