@@ -29,7 +29,7 @@ docker-compose -f prometheus-grafana-compose.yml down
 ```
 ## Check web UI
 ```
-http://localhost:3000
+http://localhost:3000 (admin/admin)
 http://localhost:9090
 ```
 
