@@ -27,6 +27,11 @@ docker run \
 docker-compose -f prometheus-grafana-compose.yml up -d
 docker-compose -f prometheus-grafana-compose.yml down
 ```
+## Check web UI
+```
+http://localhost:3000
+http://localhost:9090
+```
 
 #### References
 * [Docker Compose Stack](https://github.com/vegasbrianc/prometheus/blob/master/docker-compose.yml)
