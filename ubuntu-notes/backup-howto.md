@@ -65,4 +65,9 @@ Start short smart tests and display results
 sudo smartctl -t short /dev/sda
 sudo smartctl -a /dev/sda
 ```
-
+## NVMe disk checks
+```
+sudo apt install nvme-cli
+sudo nvme list
+sudo nvme smart-log /dev/nvme0n1
+```
