@@ -70,4 +70,5 @@ sudo smartctl -a /dev/sda
 sudo apt install nvme-cli
 sudo nvme list
 sudo nvme smart-log /dev/nvme0n1
+sudo nvme error-log /dev/nvme0n1
 ```
