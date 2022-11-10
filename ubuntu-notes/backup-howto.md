@@ -54,6 +54,7 @@ ls -la /opt/backup-volume/.zfs/snapshot/juraj/2019-04-03
 * Create and mount new ZFS pool on single device `/dev/sda`
   ```shell
   sudo zpool create backup-volume sda
+  sudo zpool status -v
   sudo zpool scrub backup-volume
   # Data is available on /backup-volume
   ```
@@ -91,4 +92,17 @@ sudo apt install nvme-cli
 sudo nvme list
 sudo nvme smart-log /dev/nvme0n1
 sudo nvme error-log /dev/nvme0n1
+```
+
+## Full disk encryption
+```shell
+sudo apt install cryptsetup
+sudo cryptsetup luksFormat /dev/sda
+```
+```shell
+sudo cryptsetup luksOpen /dev/sda dev01
+ls -la /dev/mapper/dev01
+```
+```shell
+sudo cryptsetup luksClose dev01
 ```
