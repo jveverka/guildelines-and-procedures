@@ -106,3 +106,8 @@ ls -la /dev/mapper/dev01
 ```shell
 sudo cryptsetup luksClose dev01
 ```
+
+### Check differences between folders
+```shell
+diff -rq /mnt/backup/juraj /mnt/remote/juraj
+```
