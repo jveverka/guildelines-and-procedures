@@ -111,3 +111,13 @@ sudo cryptsetup luksClose dev01
 ```shell
 diff -rq /mnt/backup/juraj /mnt/remote/juraj
 ```
+
+### Sync directories - initial mirror
+```shell
+rsync -avkSH /mnt/backup-01/juraj/ /mnt/backup-02/juraj
+```
+
+### Sync directories - delta mirror
+```shell
+rsync -avkSH --delete /mnt/backup-01/juraj/ /mnt/backup-02/juraj
+```
