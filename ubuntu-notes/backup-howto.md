@@ -115,9 +115,11 @@ diff -rq /mnt/backup/juraj /mnt/remote/juraj
 ### Sync directories - initial mirror
 ```shell
 rsync -avkSH /mnt/backup-01/juraj/ /mnt/backup-02/juraj
+rsync -avkSH -e ssh /mnt/backup-01/juraj/ user@backup-server:/mnt/backup-02/juraj/
 ```
 
 ### Sync directories - delta mirror
 ```shell
 rsync -avkSH --delete /mnt/backup-01/juraj/ /mnt/backup-02/juraj
+rsync -avkSH --delete -e ssh /mnt/backup-01/juraj/ user@backup-server:/mnt/backup-02/juraj/
 ```
