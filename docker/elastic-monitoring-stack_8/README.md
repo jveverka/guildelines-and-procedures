@@ -1,6 +1,11 @@
 # Elastic - Kibana stack
 Based on [official documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html#_start_your_cluster_with_security_enabled_and_configured).
 
+## Prerequisites
+```shell
+docker-compose -f ek-docker-compose-1n.yml up -d
+```
+
 ## Run 1-Node stack in Docker compose
 ```
 docker-compose -f ek-docker-compose-1n.yml up -d
