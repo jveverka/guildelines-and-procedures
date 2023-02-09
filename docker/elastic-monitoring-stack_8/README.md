@@ -3,7 +3,7 @@ Based on [official documentation](https://www.elastic.co/guide/en/elasticsearch/
 
 ## Prerequisites
 ```shell
-docker-compose -f ek-docker-compose-1n.yml up -d
+sysctl -w vm.max_map_count=262144
 ```
 
 ## Run 1-Node stack in Docker compose
