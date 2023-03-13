@@ -56,3 +56,8 @@ sudo apt install nvme-cli
 sudo nvme smart-log /dev/nvme0
 sudo nvme list
 ```
+## Kernel uninstall
+```
+apt list --installed | grep linux- | grep 5.15.0-67
+sudo apt remove linux-headers-5.15.0-67-generic linux-headers-5.15.0-67 linux-image-5.15.0-67-generic linux-modules-5.15.0-67-generic linux-modules-extra-5.15.0-67-generic
+```
