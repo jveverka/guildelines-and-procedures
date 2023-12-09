@@ -19,17 +19,18 @@ docker-compose -f ek-docker-compose-1n.yml down -v --rmi all --remove-orphans
 ## Run 1-Node stack in Docker Swarm mode
 1. Setup 
 ```shell
-mkdir -p /opt/data/elastic/certs
-mkdir -p /opt/data/elastic/es-data
-mkdir -p /opt/data/elastic/kibana-data
+mkdir -p /mnt/data/elastic/certs
+mkdir -p /mnt/data/elastic/es-data
+mkdir -p /mnt/data/elastic/kibana-data
 docker-compose -f ek-docker-ek-stack-setup.yml up -d
 docker logs juraj_setup_1
-sudo ls -la /opt/data/elastic/certs
+sudo ls -la /mnt/data/elastic/certs
 docker-compose -f ek-docker-ek-stack-setup.yml down -v 
 ```
 2. Start & Stop ek stack
 ```shell
 curl -k -X POST -u "elastic:u01S3crtAB7z" -H "Content-Type: application/json" https://localhost:9200/_security/user/kibana_system/_password -d "{\"password\":\"u01S3crtAB7z\"}"
+sudo sysctl -w vm.max_map_count=262144
 docker stack deploy -c ek-docker-ek-stack-swarm-1n.yml ek-stack
 docker stack rm ek-stack
 docker stack ps ek-stack
@@ -39,7 +40,7 @@ docker volume inspect ek-stack_elastic_data
 3. Remove / Uninstall
 ```shell
 docker stack rm ek-stack
-rm -rf /opt/data/elastic
+rm -rf /mnt/data/elastic
 ``` 
 
 ## Run 3-Node stack in Docker compose
